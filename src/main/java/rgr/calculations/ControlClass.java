@@ -15,7 +15,8 @@ public final class ControlClass extends DataSource {
 	private static boolean isResident;
     
     /** The number of. */
-    private static double fullSalary, salary, incomeTax, pensionTax, medicalTax, socialTax, insurance, tarifRate, numberOf;
+    private static double fullSalary, salary, incomeTax, pensionTax, medicalTax, socialTax, 
+    insurance, tarifRate, numberOf, amountOfTaxes;
 	
 	/** The tarif. */
 	private String tarif;
@@ -50,7 +51,10 @@ public final class ControlClass extends DataSource {
 	    medicalTax = CalculationTaxes.calculateMedicalTax(fullSalary);
 	    socialTax = CalculationTaxes.calculateSocialTax(fullSalary);
 	    insurance = CalculationTaxes.calculateInsuranceTax(fullSalary);
-	    salary = CalculationSalary.calculateSalary(fullSalary, incomeTax, pensionTax, medicalTax, socialTax, insurance);
+	    salary = CalculationSalary.calculateSalary(fullSalary, incomeTax, pensionTax, medicalTax, 
+	    		socialTax, insurance);
+	    amountOfTaxes = CalculationTaxes.calculateAmountOfSalary(incomeTax, pensionTax, medicalTax,
+	    		socialTax, insurance);
 	}
 	
 	/**
@@ -74,5 +78,23 @@ public final class ControlClass extends DataSource {
 			throw new Exception("Ошибка в введенных данных");
 		}
 	}
-
+	
+	/**
+	 * Gets the full salary.
+	 *
+	 * @return the full salary
+	 */
+	public static double getFullSalary() {
+	return fullSalary;
+	}
+	
+	/**
+	 * Gets the amount of salary.
+	 *
+	 * @return the amount of salary
+	 */
+	public static double getAmountOfSalary() {
+		return amountOfTaxes;
+		
+	}
 }

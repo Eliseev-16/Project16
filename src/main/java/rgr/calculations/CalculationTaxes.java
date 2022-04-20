@@ -75,4 +75,18 @@ public static double calculatePensionTax(double fullSalary) {
 	Double pension = Double.parseDouble(PENSIONTAX);
 	return fullSalary * 22/100;
 	}
+
+/**
+ * Calculate amount of salary.
+ *
+ * @param incomeTax the income tax
+ * @param pensionTax the pension tax
+ * @param medicalTax the medical tax
+ * @param socialTax the social tax
+ * @param insurance the insurance
+ * @return the double
+ */
+public static double calculateAmountOfSalary(double incomeTax, double pensionTax, double medicalTax, double socialTax, double insurance) {
+	return incomeTax + pensionTax + medicalTax + socialTax + insurance;
+}
 }
