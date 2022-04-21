@@ -10,6 +10,8 @@ import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.pdf.BaseFont;
 
 import create.CreatePDF;
+import rgr.calculations.CalculationTaxes;
+import rgr.calculations.ControlClass;
 import rgr.gui.MainGUI;
 
 // TODO: Auto-generated Javadoc
@@ -33,23 +35,42 @@ public final class CreateDocument {
 	 * @param frame the frame
 	 */
 	public void createDocument(MainGUI frame) {
-		String[][] NameCell = new String[2][7];
-		NameCell[0][0] = "Сумма";
-		NameCell[0][1] = Double.toString(frame.getInsurance());
-		NameCell[0][2] = Double.toString(frame.getMedicalTax());
-		NameCell[0][3] = Double.toString(frame.getSocialTax());
-		NameCell[0][4] = Double.toString(frame.getPensionTax());
-		NameCell[0][5] = Double.toString(frame.getIncomeTax());
-		NameCell[0][6] = Double.toString(frame.getSalary());
+		String[][] NameCell = new String[8][7];
+		NameCell[0][0] = "Начислено";
+		NameCell[0][1] = frame.getNumberOf();
+		NameCell[0][2] = frame.getNumberOf();
+		NameCell[0][3] = Double.toString(ControlClass.getFullSalary());
+		NameCell[0][4] = "Удержано";
+		NameCell[0][5] = frame.getNumberOf();
+		NameCell[0][6] = Double.toString(ControlClass.getAmountOfTaxes());
+		NameCell[1][4] = "НДФЛ";
+		NameCell[1][5] = frame.getNumberOf();
+		NameCell[1][6] = Double.toString(frame.getIncomeTax());
+		NameCell[2][4] = "Отчисления в пенсионный фонд";
+		NameCell[2][5] = frame.getNumberOf();
+		NameCell[2][6] = Double.toString(frame.getPensionTax());
+		NameCell[3][4] = "Отчисления в медицинский фонд";
+		NameCell[3][5] = frame.getNumberOf();
+		NameCell[3][6] = Double.toString(frame.getMedicalTax());
+		NameCell[4][4] = "Отчисления в социальный фонд";
+		NameCell[4][5] = frame.getNumberOf();
+		NameCell[4][6] = Double.toString(frame.getSocialTax());
+		NameCell[5][4] = "Отчисления в страховой фонд";
+		NameCell[5][5] = frame.getNumberOf();
+		NameCell[5][6] = Double.toString(frame.getInsurance());
+		NameCell[6][4] = "Выплачено";
+		NameCell[6][5] = frame.getNumberOf();
+		NameCell[6][6] = Double.toString(frame.getSalary());
+		
 
 		String[] Head = new String[7];
-		Head[0] = "";
-		Head[1] = "Травматизм";
-		Head[2] = "Медицинское";
-		Head[3] = "Социальное";
-		Head[4] = "Пенсионное";
-		Head[5] = "НДФЛ";
-		Head[6] = "Итоговая зарплата";
+		Head[0] = "Вид";
+		Head[1] = "Период (Дни/Часы)";
+		Head[2] = "Оплачено (Дни/Часы)";
+		Head[3] = "Сумма";
+		Head[4] = "Вид";
+		Head[5] = "Период (Дни/Часы)";
+		Head[6] = "Сумма";
 
 		String Texthat = "                                    Документ вашей зарплаты.";
 		String Textgeneral = "Мы посчитали какие налоги вы будете платить с вашей зарплаты, "
