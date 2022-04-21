@@ -72,15 +72,10 @@ public final class CreateDocument {
 		Head[5] = "Период (Дни/Часы)";
 		Head[6] = "Сумма";
 
-		String Texthat = "                                    Документ вашей зарплаты.";
-		String Textgeneral = "Мы посчитали какие налоги вы будете платить с вашей зарплаты, "
-				+ "определили сумму каждого из них и узнали вашу итоговую зарплату";
-		String TextTable = "                 Таблица 1. Данные о налогах и зарплаты";
-		String TextNext = "В этой таблице приведены названия налогов, сумма каждого из них и итоговая заработная плата " +
-				"после вычета налогов.";
-		String TextPicture = "           Рисунок 1 - QR код НК РФ";
-		URL Imagelink=getClass().getResource("/picture/QROfTax.png");
-		String Namefile = "Зарплата.pdf";
+		String Texthat = "                                    Расчётный лист";
+		String Textgeneral = "К выплате:     " + Double.toString(frame.getSalary());
+		String TextNext = "Тарифная ставка:     " + frame.getTariffRate();
+		String Namefile = "Расчётный лист.pdf";
 		BaseFont times = null;
 		try {
 			times = BaseFont.createFont("/fonts/times.ttf", "cp1251", BaseFont.EMBEDDED);
@@ -93,22 +88,11 @@ public final class CreateDocument {
 		CreatePDF pdf = new CreatePDF(Namefile,times);
 		Document document = pdf.getDocument();
 		pdf.addText(document, Texthat, 20,true);
-		pdf.addText(document, Textgeneral, 14,true);
-		pdf.addText(document, TextTable, 14, true);
+		pdf.addText(document, Textgeneral, 16,true);
+		pdf.addText(document, TextNext, 14,true);
 		pdf.InitTableAndAddHat(document,Head);
 		pdf.addRowsInTable(pdf.getTable(), NameCell);
 		pdf.addTable(document,pdf.getTable());
-		pdf.addText(document, TextNext, 14,true);
-		pdf.addPicture(Imagelink, document, 80, 250);
-		pdf.addText(document, "", 14,true);
-		pdf.addText(document, "", 14,true);
-		pdf.addText(document, "", 14,true);
-		pdf.addText(document, "", 14,true);
-		pdf.addText(document, "", 14,true);
-		pdf.addText(document, "", 14,true);
-		pdf.addText(document, "", 14,true);
-		pdf.addText(document, "", 14,true);
-		pdf.addText(document, TextPicture, 14,true);
 		pdf.getClose();
 
 		//вывод окна с сообщением о создании файла
