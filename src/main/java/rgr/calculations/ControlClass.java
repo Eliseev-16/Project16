@@ -42,17 +42,17 @@ public final class ControlClass extends DataSource {
 	 */
 	public void calculate() {
 		if (isResident==true) {
-			incomeTax = CalculationTaxes.calculateIncomeTaxForResident(fullSalary);
+			incomeTax = Math.floor(CalculationTaxes.calculateIncomeTaxForResident(fullSalary));
 		} 
 		else {
-			incomeTax = CalculationTaxes.calculateIncomeTaxForNonResident(fullSalary);
+			incomeTax = Math.floor(CalculationTaxes.calculateIncomeTaxForNonResident(fullSalary));
 		}
-		pensionTax = CalculationTaxes.calculatePensionTax(fullSalary);
-	    medicalTax = CalculationTaxes.calculateMedicalTax(fullSalary);
-	    socialTax = CalculationTaxes.calculateSocialTax(fullSalary);
-	    insurance = CalculationTaxes.calculateInsuranceTax(fullSalary);
-	    salary = CalculationSalary.calculateSalary(fullSalary, incomeTax, pensionTax, medicalTax, 
-	    		socialTax, insurance);
+		pensionTax = Math.floor(CalculationTaxes.calculatePensionTax(fullSalary));
+	    medicalTax = Math.floor(CalculationTaxes.calculateMedicalTax(fullSalary));
+	    socialTax = Math.floor(CalculationTaxes.calculateSocialTax(fullSalary));
+	    insurance = Math.floor(CalculationTaxes.calculateInsuranceTax(fullSalary));
+	    salary = Math.floor(CalculationSalary.calculateSalary(fullSalary, incomeTax, pensionTax, medicalTax, 
+	    		socialTax, insurance));
 	    amountOfTaxes = CalculationTaxes.calculateAmountOfTaxes(incomeTax, pensionTax, medicalTax,
 	    		socialTax, insurance);
 	}
@@ -85,7 +85,7 @@ public final class ControlClass extends DataSource {
 	 * @return the full salary
 	 */
 	public static double getFullSalary() {
-	return fullSalary;
+	return Math.floor(fullSalary);
 	}
 	
 	/**
@@ -94,7 +94,7 @@ public final class ControlClass extends DataSource {
 	 * @return the amount of salary
 	 */
 	public static double getAmountOfTaxes() {
-		return amountOfTaxes;
+		return Math.floor(amountOfTaxes);
 		
 	}
 	
