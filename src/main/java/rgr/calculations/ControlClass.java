@@ -98,12 +98,4 @@ public final class ControlClass extends DataSource {
 		
 	}
 	
-	/**
-	 * Gets the number of.
-	 *
-	 * @return the number of
-	 */
-	public static double getnumberOf() {
-		return numberOf;
-	}
 }
