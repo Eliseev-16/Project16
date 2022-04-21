@@ -97,4 +97,13 @@ public final class ControlClass extends DataSource {
 		return amountOfTaxes;
 		
 	}
+	
+	/**
+	 * Gets the number of.
+	 *
+	 * @return the number of
+	 */
+	public static double getnumberOf() {
+		return numberOf;
+	}
 }
