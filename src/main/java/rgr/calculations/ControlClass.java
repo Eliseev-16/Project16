@@ -53,7 +53,7 @@ public final class ControlClass extends DataSource {
 	    insurance = CalculationTaxes.calculateInsuranceTax(fullSalary);
 	    salary = CalculationSalary.calculateSalary(fullSalary, incomeTax, pensionTax, medicalTax, 
 	    		socialTax, insurance);
-	    amountOfTaxes = CalculationTaxes.calculateAmountOfSalary(incomeTax, pensionTax, medicalTax,
+	    amountOfTaxes = CalculationTaxes.calculateAmountOfTaxes(incomeTax, pensionTax, medicalTax,
 	    		socialTax, insurance);
 	}
 	
@@ -93,7 +93,7 @@ public final class ControlClass extends DataSource {
 	 *
 	 * @return the amount of salary
 	 */
-	public static double getAmountOfSalary() {
+	public static double getAmountOfTaxes() {
 		return amountOfTaxes;
 		
 	}

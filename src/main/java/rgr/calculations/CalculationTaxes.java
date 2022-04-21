@@ -86,7 +86,7 @@ public static double calculatePensionTax(double fullSalary) {
  * @param insurance the insurance
  * @return the double
  */
-public static double calculateAmountOfSalary(double incomeTax, double pensionTax, double medicalTax, double socialTax, double insurance) {
+public static double calculateAmountOfTaxes(double incomeTax, double pensionTax, double medicalTax, double socialTax, double insurance) {
 	return incomeTax + pensionTax + medicalTax + socialTax + insurance;
 }
 }
