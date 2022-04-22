@@ -13,6 +13,7 @@ import create.CreatePDF;
 import rgr.calculations.CalculationTaxes;
 import rgr.calculations.ControlClass;
 import rgr.gui.MainGUI;
+import rgr.servlets.ServletForMainPage.RequestCalc;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -73,6 +74,8 @@ public final class CreateDocument {
 		Head[6] = "Сумма";
 
 		String Texthat = "                                    Расчётный лист";
+		String TextPerson = RequestCalc.getSurname() + " " + RequestCalc.getName() 
+		+ " " + RequestCalc.getPatronumic();
 		String Textgeneral = "К выплате:     " + Double.toString(frame.getSalary());
 		String TextNext = "Тарифная ставка:     " + frame.getTariffRate();
 		String Namefile = "Расчётный лист.pdf";
@@ -88,13 +91,13 @@ public final class CreateDocument {
 		CreatePDF pdf = new CreatePDF(Namefile,times);
 		Document document = pdf.getDocument();
 		pdf.addText(document, Texthat, 20,true);
+		pdf.addText(document, TextPerson, 18, true);
 		pdf.addText(document, Textgeneral, 16,true);
 		pdf.addText(document, TextNext, 14,true);
 		pdf.InitTableAndAddHat(document,Head);
 		pdf.addRowsInTable(pdf.getTable(), NameCell);
 		pdf.addTable(document,pdf.getTable());
 		pdf.getClose();
-
 		//вывод окна с сообщением о создании файла
 		JOptionPane.showMessageDialog(null, "Файл " + Namefile + " создан","Create PDF", JOptionPane.PLAIN_MESSAGE);
 	}

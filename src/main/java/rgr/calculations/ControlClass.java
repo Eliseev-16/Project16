@@ -4,6 +4,7 @@ import javax.swing.JOptionPane;
 
 import rgr.DataSource;
 import rgr.gui.MainGUI;
+import rgr.servlets.ServletForMainPage.RequestCalc;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -13,7 +14,8 @@ public final class ControlClass extends DataSource {
 	
 	/** The is resident. */
 	private static boolean isResident;
-    
+	
+	private static String surname, name, patronumic;
     /** The number of. */
     private static double fullSalary, salary, incomeTax, pensionTax, medicalTax, socialTax, 
     insurance, tarifRate, numberOf, amountOfTaxes;
@@ -27,12 +29,15 @@ public final class ControlClass extends DataSource {
 	 * @param frame the frame
 	 * @throws Exception the exception
 	 */
-	public ControlClass(MainGUI frame) throws Exception{
-		tarifRate = Double.parseDouble(frame.getTariffRate());
-		numberOf = Double.parseDouble(frame.getNumberOf());
+	public ControlClass() throws Exception{
+		surname = RequestCalc.getSurname();
+		name = RequestCalc.getName();
+		patronumic = RequestCalc.getPatronumic();
+		tarifRate = Double.parseDouble(RequestCalc.getTariffRate());
+		numberOf = Double.parseDouble(RequestCalc.getWorkTime());
 		checkExeption();
 		fullSalary = tarifRate * numberOf;
-		isResident = frame.getIsResident();
+		isResident = RequestCalc.getIsResident();
 		calculate();
 		callSetValue();
 	}
@@ -97,5 +102,4 @@ public final class ControlClass extends DataSource {
 		return Math.floor(amountOfTaxes);
 		
 	}
-	
 }
