@@ -15,7 +15,6 @@ public final class ControlClass extends DataSource {
 	/** The is resident. */
 	private static boolean isResident;
 	
-	private static String surname, name, patronumic;
     /** The number of. */
     private static double fullSalary, salary, incomeTax, pensionTax, medicalTax, socialTax, 
     insurance, tarifRate, numberOf, amountOfTaxes;
@@ -26,13 +25,9 @@ public final class ControlClass extends DataSource {
 	/**
 	 * Instantiates a new control class.
 	 *
-	 * @param frame the frame
 	 * @throws Exception the exception
 	 */
 	public ControlClass() throws Exception{
-		surname = RequestCalc.getSurname();
-		name = RequestCalc.getName();
-		patronumic = RequestCalc.getPatronumic();
 		tarifRate = Double.parseDouble(RequestCalc.getTariffRate());
 		numberOf = Double.parseDouble(RequestCalc.getWorkTime());
 		checkExeption();
@@ -100,6 +95,5 @@ public final class ControlClass extends DataSource {
 	 */
 	public static double getAmountOfTaxes() {
 		return Math.floor(amountOfTaxes);
-		
-	}
+		}
 }
