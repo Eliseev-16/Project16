@@ -20,7 +20,7 @@
 	<section>
 		<div class="container wrapper">
 			<h1 class="h1">Панель администратора</h1>
-			<form class="calc" action="">
+			<form class="calc" action="${pageContext.request.contextPath}/" method="post">
 				<label for="pensionTax">Пенсионное страхование (%)</label>
 				<input class="input" type="text" name="pensionTax" id="pensionTax" value="${pensionTax}" required>
 

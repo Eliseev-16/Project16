@@ -9,7 +9,9 @@ import javax.swing.JTextField;
  */
 public abstract class DataSource implements Structure {
 
-    /** The salary. */
+	private String surname, name, patronumic; //ФИО
+	
+	/** The salary. */
     private double salary; // з/п
 
     /** The tariff rate. */

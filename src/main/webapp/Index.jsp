@@ -20,7 +20,7 @@
 	<section>
 		<div class="container wrapper">
 			<h1 class="h1">Зарплатный калькулятор</h1>
-			<form class="calc" action="Calculations.jsp">
+			<form class="calc" action="${pageContext.request.contextPath}/MainServlet" method="post">
 				<label for="surname">Фамилия</label>
 				<input class="input" type="text" name="surname" id="surname" value="${surname}" required>
 
