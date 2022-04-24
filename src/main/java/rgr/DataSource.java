@@ -15,13 +15,13 @@ public abstract class DataSource implements Structure {
     private double salary; // з/п
 
     /** The tariff rate. */
-    private String tariffRate;//тарифная ставка
+    private double tariffRate;//тарифная ставка
 
     /** The number of. */
-    private String numberOf; //количество дней/часов
+    private double numberOf; //количество дней/часов
 
     /** The is day. */
-    private boolean isResident, isDay; //комбобоксы
+    private String isResident, isDay;
 
     /** The insurance. */
     private double incomeTax, pensionTax, medicalTax, socialTax, insurance; //налоги
@@ -40,20 +40,15 @@ public abstract class DataSource implements Structure {
      * @param socialTax the social tax
      * @param insurance the insurance
      */
-    protected final void setValues(JTextField tariffRate, JTextField numberOf, JComboBox resident, JComboBox typeOfPeriod,
+    protected final void setValues(String surname, String name, String patronumic, double tariffRate, double numberOf, String isResident, String isDay,
                                    double salary, double incomeTax,double pensionTax,double medicalTax, double socialTax, double insurance){
-        this.tariffRate=tariffRate.getText();
-        this.numberOf=numberOf.getText();
-        if (typeOfPeriod.getSelectedItem().equals("Подневная")) {
-            this.isDay=true;
-        } else {
-            this.isDay=false;
-        }
-        if (resident.getSelectedItem().equals("Резидент")) {
-            this.isResident=true;
-        } else {
-            this.isResident=false;
-        }
+    	this.surname=surname;
+    	this.name=name;
+    	this.patronumic=patronumic;
+    	this.tariffRate=tariffRate;
+        this.numberOf=numberOf;
+        this.isDay=isDay;
+        this.isResident=isResident;
         this.salary = salary;
         this.incomeTax = incomeTax;
         this.pensionTax = pensionTax;
@@ -88,6 +83,18 @@ public abstract class DataSource implements Structure {
      *
      * @return the salary
      */
+    public final String getSurname() {
+        return surname;
+    }
+    
+    public final String getName() {
+        return name;
+    }
+    
+    public final String getPatronumic() {
+        return patronumic;
+    }
+    
     public final double getSalary() {
         return salary;
     }
@@ -97,7 +104,7 @@ public abstract class DataSource implements Structure {
      *
      * @return the checks if is day
      */
-    public final boolean getIsDay() {
+    public final String getIsDay() {
         return isDay;
     }
 
@@ -142,7 +149,7 @@ public abstract class DataSource implements Structure {
      *
      * @return the tariff rate
      */
-    public final String getTariffRate() {
+    public final double getTariffRate() {
         return tariffRate;
     }
 
@@ -151,7 +158,7 @@ public abstract class DataSource implements Structure {
      *
      * @return the number of
      */
-    public final String getNumberOf() {
+    public final double getNumberOf() {
         return numberOf;
     }
 
@@ -160,7 +167,7 @@ public abstract class DataSource implements Structure {
      *
      * @return the checks if is resident
      */
-    public final boolean getIsResident() {
+    public final String getIsResident() {
         return isResident;
     }
 
