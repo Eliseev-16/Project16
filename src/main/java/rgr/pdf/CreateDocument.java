@@ -12,7 +12,6 @@ import com.itextpdf.text.pdf.BaseFont;
 import create.CreatePDF;
 import rgr.calculations.CalculationTaxes;
 import rgr.calculations.ControlClass;
-import rgr.gui.MainGUI;
 import rgr.servlets.ServletForMainPage.RequestCalc;
 
 // TODO: Auto-generated Javadoc

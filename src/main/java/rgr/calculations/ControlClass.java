@@ -3,7 +3,6 @@ package rgr.calculations;
 import javax.swing.JOptionPane;
 
 import rgr.DataSource;
-import rgr.gui.MainGUI;
 import rgr.servlets.ServletForMainPage.RequestCalc;
 
 // TODO: Auto-generated Javadoc
