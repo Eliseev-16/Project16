@@ -25,20 +25,26 @@
 				<input class="input" type="text" name="pensionTax" id="pensionTax" value="${pensionTax}" required>
 
 				<label for="medicalTax">Медицинское страхование (%)</label>
-				<input class="input" type="text" name="medicalTax" id="medicalTax" value="${medicalTax}" required>
+				<input class="input" type="text" name="medicalTax" id="medicalTax" value="${medicalTax}" required >
 
 				<label for="socialTax">Социальное страхование (%)</label>
 				<input class="input" type="text" name="socialTax" id="socialTax" value="${socialTax}" required>
 
 				<label for="incomeTax">НДФЛ для резидента РФ (%)</label>
-				<input class="input" type="text" name="incomeTax" id="incomeTax" value="${incomeTax}">
+				<input class="input" type="text" name="incomeTax" id="incomeTax" value="${incomeTax}" required>
 
 				<label for="incomeTax">НДФЛ для нерезидента РФ (%)</label>
-				<input class="input" type="text" name="incomeTax" id="incomeTax" value="${incomeTax}">
+				<input class="input" type="text" name="incomeTax" id="incomeTax" value="${incomeTax}" required>
 
 
 				<label for="injuryTax">Травматизм (%)</label>
 				<input class="input" type="text" name="injuryTax" id="injuryTax" value="${injuryTax}" required>
+				
+				<div class="error">
+					<p class="err-msg">
+						${error-msg}
+					</p>
+				</div>
 
 				<div class="log-btn">
 					<input class="btn" type="submit" name="sign" value="Сохранить">

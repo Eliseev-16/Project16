@@ -52,6 +52,12 @@
 					<option  value="${isResident}">Резидент
 					<option value="${isResident}">Не резидент
 				</select>
+				
+				<div class="error">
+					<p class="err-msg">
+						${error-msg}
+					</p>
+				</div>
 
 				<div class="log-btn">
 					<input class="btn" type="submit" name="sign" value="Рассчитать">
