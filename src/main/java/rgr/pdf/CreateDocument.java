@@ -1,4 +1,4 @@
-//package rgr.pdf;
+package rgr.pdf;
 //
 //import java.io.IOException;
 //import java.net.URL;
@@ -18,7 +18,7 @@
 ///**
 // * The Class CreateDocument.
 // */
-//public final class CreateDocument {
+public final class CreateDocument {
 //
 //	/**
 //	 * Instantiates a new creates the document.
@@ -101,4 +101,4 @@
 //		JOptionPane.showMessageDialog(null, "Файл " + Namefile + " создан","Create PDF", JOptionPane.PLAIN_MESSAGE);
 //	}
 //
-//}
+}
