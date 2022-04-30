@@ -31,8 +31,7 @@ public class ServletForMainPage extends HttpServlet{
 		try {
 			Calc.setAsRequestAttributesAndCalculate(request);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			 System.out.println("Ошибка");
 		}
 		 
 		request.getRequestDispatcher("/Calculation.jsp").forward(request, response);

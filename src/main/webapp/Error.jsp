@@ -12,7 +12,7 @@
 	<header class="header">
 		<div class="container">
 				<ul class="menu">
-					<li><a href="Login.jps" class="menu-href">Назад</a></li>
+					<li><a href="Login.jsp" class="menu-href">Назад</a></li>
 				</ul>
 		</div>
 	</header>
@@ -24,12 +24,12 @@
 			</h2>
 			<div>
 				<p class="error-text">
-						${error-text}
+						${errorText}
 				</p>
 			</div>
 
 			<div class="about-err">
-				<img src="error.jps" alt="Error" class="error-img">
+				<img src="error.jpg" alt="Error" class="error-img">
 			</div>
 				
 		</div>	
