@@ -29,7 +29,7 @@
 			</div>
 
 			<div class="about-err">
-				<img src="error.jpg" alt="Error" class="error-img">
+				<img src="pictures/error.jpg" alt="Error" class="error-img">
 			</div>
 				
 		</div>	
