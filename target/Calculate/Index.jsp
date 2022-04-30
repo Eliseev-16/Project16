@@ -20,7 +20,7 @@
 	<section>
 		<div class="container wrapper">
 			<h1 class="h1">Зарплатный калькулятор</h1>
-			<form class="calc" action="Calculations.jsp">
+			<form class="calc" action="${pageContext.request.contextPath}/MainServlet" method="post">
 				<label for="surname">Фамилия</label>
 				<input class="input" type="text" name="surname" id="surname" value="${surname}" required>
 
@@ -52,6 +52,12 @@
 					<option  value="${isResident}">Резидент
 					<option value="${isResident}">Не резидент
 				</select>
+				
+				<div class="error">
+					<p class="err-msg">
+						${error-msg}
+					</p>
+				</div>
 
 				<div class="log-btn">
 					<input class="btn" type="submit" name="sign" value="Рассчитать">

@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import rgr.DataSource;
 import rgr.calculations.ControlClass;
 
 // TODO: Auto-generated Javadoc
@@ -41,7 +42,7 @@ public class ServletForMainPage extends HttpServlet{
 	/**
 	 * The Class RequestCalc.
 	 */
-	public static class RequestCalc {
+	public static class RequestCalc extends DataSource{
 		
 		/** The surname. */
 		private static String surname;
@@ -53,13 +54,13 @@ public class ServletForMainPage extends HttpServlet{
 		private static String patronumic;
 		
 		/** The tariff rate. */
-		private static String tariffRate;
+		private static double tariffRate;
 		
 		/** The work time. */
-		private static String workTime;
+		private static double workTime;
 		
 		/** The is resident. */
-		private static boolean isResident;
+		private static boolean isResident, isDay;
 		
 		/** The salary. */
 		private  double salary;
@@ -90,16 +91,22 @@ public class ServletForMainPage extends HttpServlet{
 		 * @param isResident the is resident
 		 */
 		private RequestCalc (String surname, String name, String patronumic, String tariffRate,
-				String workTime, String isResident) {
+				String workTime, String isResident, String isDay) {
 			this.surname = surname;
 			this.name = name;
 			this.patronumic = patronumic;
-			this.tariffRate = tariffRate;
-			this.workTime = workTime;
+			this.tariffRate = Double.parseDouble(tariffRate);
+			this.workTime = Double.parseDouble(workTime);
 			 if (isResident.equals("Резидент")) {
 		            this.isResident=true;
 		        } else {
 		            this.isResident=false;
+		        }
+			 
+			 if (isDay.equals("Подневная")) {
+		            this.isDay=true;
+		        } else {
+		            this.isDay=false;
 		        }
 			}
 		
@@ -116,7 +123,8 @@ public class ServletForMainPage extends HttpServlet{
 			request.getParameter("patronumic"), 
 			request.getParameter("tariff-rate"),
 			request.getParameter("work-time"),
-			request.getParameter("isResident"));
+			request.getParameter("isResident"),
+			request.getParameter("isDay"));
 			}
 				
 		/**
@@ -126,87 +134,28 @@ public class ServletForMainPage extends HttpServlet{
 		 * @throws Exception the exception
 		 */
 		public void setAsRequestAttributesAndCalculate(HttpServletRequest request) throws Exception {
-			setValues();
-			request.setAttribute("salary", salary);
-			request.setAttribute("incomeTax", incomeTax);
-			request.setAttribute("pensionTax", pensionTax);
-			request.setAttribute("medicalTax", medicalTax);
-			request.setAttribute("socialTax", socialTax);
-			request.setAttribute("injuryTax", injuryTax);
+			callSetValue();
+			ControlClass controlClass = new ControlClass(this);
+			request.setAttribute("salary", String.format(".2f", controlClass.getSalary()));
+			request.setAttribute("incomeTax", String.format(".2f", controlClass.getIncomeTax()));
+			request.setAttribute("pensionTax", String.format(".2f", controlClass.getPensionTax()));
+			request.setAttribute("medicalTax", String.format(".2f", controlClass.getMedicalTax()));
+			request.setAttribute("socialTax", String.format(".2f", controlClass.getSocialTax()));
+			request.setAttribute("injuryTax", String.format(".2f", controlClass.getInsurance()));
 		}
 		
-		/**
-		 * Gets the surname.
-		 *
-		 * @return the surname
-		 */
-		public static String getSurname(){
-			return surname;
+		@Override
+		public void callSetValue() {
+			 setValues(surname, name, patronumic, tariffRate, workTime, isResident, isDay );
 			
 		}
-		
-		/**
-		 * Gets the name.
-		 *
-		 * @return the name
-		 */
-		public static String getName(){
-			return name;
-		}
-		
-		/**
-		 * Gets the patronumic.
-		 *
-		 * @return the patronumic
-		 */
-		public static String getPatronumic(){
-			return patronumic;
+
+		@Override
+		public void checkExeption() throws Exception {
+			if(workTime * tariffRate <= 0 || workTime <= 0 || tariffRate <= 0) {
+				throw new Exception("Ошибка в введенных данных");
+			}
 			
-		}
-		
-		/**
-		 * Gets the tariff rate.
-		 *
-		 * @return the tariff rate
-		 */
-		public static String getTariffRate(){
-			return tariffRate;
-			
-		}
-		
-		/**
-		 * Gets the work time.
-		 *
-		 * @return the work time
-		 */
-		public static String getWorkTime(){
-			return workTime;
-			
-		}
-		
-		/**
-		 * Gets the checks if is resident.
-		 *
-		 * @return the checks if is resident
-		 */
-		public static boolean getIsResident(){
-			return isResident;
-			
-		}
-		
-		/**
-		 * Sets the values.
-		 *
-		 * @throws Exception the exception
-		 */
-		public void setValues () throws Exception {
-			ControlClass calculate = new ControlClass();
-			this.salary = calculate.getSalary();
-			this.incomeTax = calculate.getIncomeTax();
-			this.pensionTax = calculate.getPensionTax();
-			this.medicalTax = calculate.getMedicalTax();
-			this.socialTax = calculate.getSocialTax();
-			this.injuryTax = calculate.getInsurance();
 		}
 	}
 }

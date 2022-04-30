@@ -21,7 +21,7 @@ public abstract class DataSource implements Structure {
     private double numberOf; //количество дней/часов
 
     /** The is day. */
-    private String isResident, isDay;
+    private boolean isResident, isDay;
 
     /** The insurance. */
     private double incomeTax, pensionTax, medicalTax, socialTax, insurance; //налоги
@@ -40,8 +40,7 @@ public abstract class DataSource implements Structure {
      * @param socialTax the social tax
      * @param insurance the insurance
      */
-    protected final void setValues(String surname, String name, String patronumic, double tariffRate, double numberOf, String isResident, String isDay,
-                                   double salary, double incomeTax,double pensionTax,double medicalTax, double socialTax, double insurance){
+    protected final void setValues(String surname, String name, String patronumic, double tariffRate, double numberOf, boolean isResident, boolean isDay){                 
     	this.surname=surname;
     	this.name=name;
     	this.patronumic=patronumic;
@@ -49,12 +48,6 @@ public abstract class DataSource implements Structure {
         this.numberOf=numberOf;
         this.isDay=isDay;
         this.isResident=isResident;
-        this.salary = salary;
-        this.incomeTax = incomeTax;
-        this.pensionTax = pensionTax;
-        this.medicalTax = medicalTax;
-        this.socialTax = socialTax;
-        this.insurance = insurance;
     }
 
     /**
@@ -104,7 +97,7 @@ public abstract class DataSource implements Structure {
      *
      * @return the checks if is day
      */
-    public final String getIsDay() {
+    public final boolean getIsDay() {
         return isDay;
     }
 
@@ -167,7 +160,7 @@ public abstract class DataSource implements Structure {
      *
      * @return the checks if is resident
      */
-    public final String getIsResident() {
+    public final boolean getIsResident() {
         return isResident;
     }
 

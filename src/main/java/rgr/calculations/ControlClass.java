@@ -18,20 +18,17 @@ public final class ControlClass extends DataSource {
     private static double fullSalary, salary, incomeTax, pensionTax, medicalTax, socialTax, 
     insurance, tarifRate, numberOf, amountOfTaxes;
 	
-	/** The tarif. */
-	private String tarif;
-	
 	/**
 	 * Instantiates a new control class.
 	 *
 	 * @throws Exception the exception
 	 */
-	public ControlClass() throws Exception{
-		tarifRate = Double.parseDouble(RequestCalc.getTariffRate());
-		numberOf = Double.parseDouble(RequestCalc.getWorkTime());
+	public ControlClass(RequestCalc requestCalc) throws Exception{
+		tarifRate = requestCalc.getTariffRate();
+		numberOf = requestCalc.getNumberOf();
 		checkExeption();
 		fullSalary = tarifRate * numberOf;
-		isResident = RequestCalc.getIsResident();
+		isResident = requestCalc.getIsResident();
 		calculate();
 		callSetValue();
 	}
@@ -66,7 +63,7 @@ public final class ControlClass extends DataSource {
 	}
 
 	/**
-	 * Check exeption.
+	 * Check exception.
 	 *
 	 * @throws Exception the exception
 	 */
