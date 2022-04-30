@@ -223,3 +223,19 @@ display: flex;
 justify-content: center;
 margin-top: 70px;
 }
+
+.reg {
+text-align: center;
+margin-top: 20px;
+}
+
+.regist {
+font-size: 12px;
+text-decoration: none;
+font-family: sans-serif;
+color: #21256E;
+}
+
+.regist:hover {
+border-bottom: 1px solid #21256E;;
+}
