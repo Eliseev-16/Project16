@@ -12,7 +12,7 @@
 	<section>
 		<div class="container wrapper">
 			<h1 class="h1">Регистрация</h1>
-			<form class="calc login" action="${pageContext.request.contextPath}/AuthorizationServlet" method="post">
+			<form class="calc login" action="${pageContext.request.contextPath}/Registration" method="post">
 				<label for="log">Логин</label>
 				<input class="input" type="text" name="log" id="log" value="${log}" required>
 	
