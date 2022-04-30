@@ -149,7 +149,7 @@ select {
 .member {
 	width: 303px;
 	text-align: center;
-	background: url('memb.png') no-repeat center top;
+	background: url('../pictures/memb.png') no-repeat center top;
 	padding-top: 108px;
 }
 

@@ -5,14 +5,14 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="main.css">
+	<link rel="stylesheet" href="css/Main.css">
 	<title>Ошибка</title>
 </head>
 <body>
 	<header class="header">
 		<div class="container">
 				<ul class="menu">
-					<li><a href="Login.jps" class="menu-href">Назад</a></li>
+					<li><a href="Login.jsp" class="menu-href">Назад</a></li>
 				</ul>
 		</div>
 	</header>
@@ -24,12 +24,12 @@
 			</h2>
 			<div>
 				<p class="error-text">
-						${error-text}
+						${errorText}
 				</p>
 			</div>
 
 			<div class="about-err">
-				<img src="error.jps" alt="Error" class="error-img">
+				<img src="pictures/error.jpg" alt="Error" class="error-img">
 			</div>
 				
 		</div>	

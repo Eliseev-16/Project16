@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import rgr.sqlManager.SQLReader;
+
 @WebServlet(name="ServletForAuthorization", urlPatterns="/AuthorizationServlet") 
 public class ServletForAuthorization extends HttpServlet{
 	
@@ -49,12 +51,15 @@ public class ServletForAuthorization extends HttpServlet{
 		RequestCalc Calc = RequestCalc.fromRequestParameters(request, response);
 		login = Calc.getLogin();
 		password = Calc.getPassword();
-		if(login.equals("admin") && password.equals("admin")) {
-			request.getRequestDispatcher("/Admin.jsp").forward(request, response);
-		}
-		
-		if(login.equals("user") && password.equals("user")) {
-			request.getRequestDispatcher("/Index.jsp").forward(request, response);
-		}
+	    if(SQLReader.readUser(login, password) != 0) {
+	    	request.getRequestDispatcher("/Index.jsp").forward(request, response);
+	    }
+	    else if(login.equals("user") && password.equals("user")) {
+	    	request.getRequestDispatcher("/Index.jsp").forward(request, response);
+	    }
+	    else {
+	    	request.setAttribute("errorText", "Ошибка логина или пароля");
+	    	request.getRequestDispatcher("Error.jsp").forward(request, response);
+	    }
 	}
 }
