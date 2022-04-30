@@ -16,6 +16,7 @@ public class ServletForAuthorization extends HttpServlet{
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		checkLogin(request, response);
 	}
+
 	
 	public static class RequestCalc {
 		
@@ -48,11 +49,11 @@ public class ServletForAuthorization extends HttpServlet{
 		RequestCalc Calc = RequestCalc.fromRequestParameters(request, response);
 		login = Calc.getLogin();
 		password = Calc.getPassword();
-		if(login.equals("Иванов") && password.equals("Иван")) {
+		if(login.equals("admin") && password.equals("admin")) {
 			request.getRequestDispatcher("/Admin.jsp").forward(request, response);
 		}
 		
-		if(login.equals("Петров") && password.equals("Петя")) {
+		if(login.equals("user") && password.equals("user")) {
 			request.getRequestDispatcher("/Index.jsp").forward(request, response);
 		}
 	}
