@@ -2,6 +2,7 @@ package rgr.sqlManager;
 
 import javax.swing.*;
 import java.io.File;
+import java.net.URL;
 import java.sql.*;
 import java.util.Locale;
 
@@ -9,13 +10,14 @@ public class SQLConnection {
 
     //String login = "root";
     //String pass = "";//?useSSL=false
-    private String url;
+    public String url;
     private Connection connection;
     private Statement statement;
     private boolean isConnect = false;
 
     public SQLConnection() throws Exception {
-        String basePath = new File("").getAbsolutePath();
+        URL basePathS = this.getClass ().getResource("");
+        String basePath = basePathS.getPath();
         if (basePath.toLowerCase().contains("classes")){
         basePath = basePath.substring(0,basePath.indexOf("classes") + 7) + "/";
         url = "jdbc:sqlite:" + basePath + "Users.s3db";}
@@ -91,6 +93,7 @@ public class SQLConnection {
         //SQLAdder.addUser("admin","admin","2");
         //SQLAdder.addUser("Eliseev","12345","1");
         //System.out.println(SQLReader.readCoefficients().toString());
+
 
     }
 }
