@@ -4,6 +4,8 @@ import javax.swing.JOptionPane;
 
 import rgr.DataSource;
 import rgr.servlets.ServletForMainPage.RequestCalc;
+import rgr.sqlManager.CoefficientValues;
+import rgr.sqlManager.SQLReader;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -35,21 +37,27 @@ public final class ControlClass extends DataSource {
 	
 	/**
 	 * Calculate.
+	 * @throws Exception 
 	 */
-	public void calculate() {
+	public void calculate() throws Exception {
+		CoefficientValues coefficients = SQLReader.readCoefficients();
+		CalculationTaxes calculationTaxes = new CalculationTaxes();
+		calculationTaxes.setValue(coefficients.getPension(), coefficients.getMedical(),
+				coefficients.getSocial(),coefficients.getInsurance(), coefficients.getIncome(),
+				coefficients.getIncomeNonResident());
 		if (isResident==true) {
-			incomeTax = Math.floor(CalculationTaxes.calculateIncomeTaxForResident(fullSalary));
+			incomeTax = Math.floor(calculationTaxes.calculateIncomeTaxForResident(fullSalary));
 		} 
 		else {
-			incomeTax = Math.floor(CalculationTaxes.calculateIncomeTaxForNonResident(fullSalary));
+			incomeTax = Math.floor(calculationTaxes.calculateIncomeTaxForNonResident(fullSalary));
 		}
-		pensionTax = Math.floor(CalculationTaxes.calculatePensionTax(fullSalary));
-	    medicalTax = Math.floor(CalculationTaxes.calculateMedicalTax(fullSalary));
-	    socialTax = Math.floor(CalculationTaxes.calculateSocialTax(fullSalary));
-	    insurance = Math.floor(CalculationTaxes.calculateInsuranceTax(fullSalary));
+		pensionTax = Math.floor(calculationTaxes.calculatePensionTax(fullSalary));
+	    medicalTax = Math.floor(calculationTaxes.calculateMedicalTax(fullSalary));
+	    socialTax = Math.floor(calculationTaxes.calculateSocialTax(fullSalary));
+	    insurance = Math.floor(calculationTaxes.calculateInsuranceTax(fullSalary));
 	    salary = Math.floor(CalculationSalary.calculateSalary(fullSalary, incomeTax, pensionTax, medicalTax, 
 	    		socialTax, insurance));
-	    amountOfTaxes = CalculationTaxes.calculateAmountOfTaxes(incomeTax, pensionTax, medicalTax,
+	    amountOfTaxes = calculationTaxes.calculateAmountOfTaxes(incomeTax, pensionTax, medicalTax,
 	    		socialTax, insurance);
 	}
 	

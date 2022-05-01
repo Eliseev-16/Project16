@@ -5,7 +5,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="Main.css">
+	<link rel="stylesheet" href="css/Main.css">
 	<title>Вычисления</title>
 </head>
 <body>
@@ -44,12 +44,12 @@
 
 				<div class="out">
 					<label class="results">Тарифная ставка (руб): </label>
-					<input class="output" type="text" name="tariff-rate" id="tariff-rate" value="${tariff-rate}">
+					<input class="output" type="text" name="tariff-rate" id="tariff-rate" value="${tariff_rate}">
 				</div>
 				
 				<div class="out">
 					<label class="results">Количество отработанного времени: </label>
-					<input class="output" type="text" name="work-time" id="work-time" value="${work-time}">
+					<input class="output" type="text" name="work-time" id="work-time" value="${work_time}">
 				</div>
 				
 				<div class="out">

@@ -5,7 +5,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="Main.css">
+	<link rel="stylesheet" href="css/Main.css">
 	<title>Зарплатный калькулятор</title>
 </head>
 <body>
@@ -40,10 +40,10 @@
 
 
 				<label for="tariff-rate">Тарифная ставка (руб)</label>
-				<input class="input" type="text" name="tariff-rate" id="tariff-rate" value="${tariff-rate}" required>
+				<input class="input" type="text" name="tariff-rate" id="tariff-rate" value="${tariff_rate}" required>
 
 				<label for="work-time">Количество отработанного времени</label>
-				<input class="input" type="text" name="work-time" id="work-time" value="${work-time}" required>
+				<input class="input" type="text" name="work-time" id="work-time" value="${work_time}" required>
 
 				<label for="resident">Принадлежность к государству</label>
 				<!--<input class="input" type="text" name="resident" id="resident" value="${resident}" required>-->
@@ -55,7 +55,7 @@
 				
 				<div class="error">
 					<p class="err-msg">
-						${error-msg}
+						${error_msg}
 					</p>
 				</div>
 

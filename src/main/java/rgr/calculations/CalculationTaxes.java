@@ -4,14 +4,23 @@ package rgr.calculations;
 /**
  * The Class CalculationTaxes.
  */
-public final class CalculationTaxes {
+public class CalculationTaxes {
 	
 /** The Constant INSURANCETAX. */
-private final static String PENSIONTAX = "22", MEDICALTAX = "5.1", SOCIALTAX = "2.9", INSURANCETAX = "0.2";
+private static String PENSIONTAX, MEDICALTAX, SOCIALTAX, INSURANCETAX;
 
 /** The Constant INCOMETAXFORREZIDENT. */
-private final static double INCOMETAXFORREZIDENT = 13, INCOMETAXFORNONREZIDENT = 30;
-	
+private static String INCOMETAXFORREZIDENT, INCOMETAXFORNONREZIDENT;
+
+	public void setValue(String PENSIONTAX, String MEDICALTAX, String SOCIALTAX, String INSURANCETAX, 
+		String INCOMETAXFORREZIDENT, String INCOMETAXFORNONREZIDENT) {
+	this.PENSIONTAX = PENSIONTAX;
+	this.MEDICALTAX = MEDICALTAX;
+	this.SOCIALTAX = SOCIALTAX;
+	this.INSURANCETAX = INSURANCETAX;
+	this.INCOMETAXFORREZIDENT = INCOMETAXFORREZIDENT;
+	this.INCOMETAXFORNONREZIDENT = INCOMETAXFORNONREZIDENT;
+}
 /**
  * Calculate income tax for resident.
  *
@@ -19,7 +28,8 @@ private final static double INCOMETAXFORREZIDENT = 13, INCOMETAXFORNONREZIDENT =
  * @return the double
  */
 public static double calculateIncomeTaxForResident(double fullSalary) {
-	return fullSalary * INCOMETAXFORREZIDENT/100;
+	Double INCOMEFORREZIDENT = Double.parseDouble(INCOMETAXFORREZIDENT);
+	return fullSalary * INCOMEFORREZIDENT/100;
 	}
 
 /**
@@ -29,7 +39,8 @@ public static double calculateIncomeTaxForResident(double fullSalary) {
  * @return the double
  */
 public static double calculateIncomeTaxForNonResident(double fullSalary) {
-	return fullSalary * INCOMETAXFORNONREZIDENT/100;
+	Double INCOMEFORNONREZIDENT = Double.parseDouble(INCOMETAXFORNONREZIDENT);
+	return fullSalary * INCOMEFORNONREZIDENT/100;
 	}
 
 /**
