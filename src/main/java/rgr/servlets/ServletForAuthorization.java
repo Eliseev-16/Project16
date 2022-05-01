@@ -16,7 +16,12 @@ public class ServletForAuthorization extends HttpServlet{
 	private String login, password;
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		checkLogin(request, response);
+		try {
+			checkLogin(request, response);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	
@@ -47,19 +52,25 @@ public class ServletForAuthorization extends HttpServlet{
 		}
 		}
 	
-	public void checkLogin(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void checkLogin(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		RequestCalc Calc = RequestCalc.fromRequestParameters(request, response);
 		login = Calc.getLogin();
 		password = Calc.getPassword();
-	    if(SQLReader.readUser(login, password) != 0) {
-	    	request.getRequestDispatcher("/Index.jsp").forward(request, response);
-	    }
-	    else if(login.equals("user") && password.equals("user")) {
-	    	request.getRequestDispatcher("/Index.jsp").forward(request, response);
-	    }
+		if(login.equals("user") && password.equals("user")) {
+			request.getRequestDispatcher("/Index.jsp").forward(request, response);
+		}
+		
+		else if(SQLReader.readUser(login, password) == 1) {
+			request.getRequestDispatcher("/Index.jsp").forward(request, response);
+		}
+		
+		else if (SQLReader.readUser(login, password) == 2) {
+			request.getRequestDispatcher("/Admin.jsp").forward(request, response);
+		}
+	     
 	    else {
-	    	request.setAttribute("errorText", "Ошибка логина или пароля");
-	    	request.getRequestDispatcher("Error.jsp").forward(request, response);
+	    	request.setAttribute("errorMsg", "Ошибка логина или пароля");
+	    	request.getRequestDispatcher("/Login.jsp").forward(request, response);
 	    }
 	}
 }

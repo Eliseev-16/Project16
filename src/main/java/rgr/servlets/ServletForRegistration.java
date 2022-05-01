@@ -20,8 +20,7 @@ public class ServletForRegistration extends HttpServlet{
 		RequestCalc Calc = RequestCalc.fromRequestParameters(request, response);
 		login = Calc.getLogin();
 		password = Calc.getPassword();
-		SQLAdder.addUser(login, password, password);
-		request.getRequestDispatcher("/Index.jsp").forward(request, response);
+		registration(request, response);
 	}
 public static class RequestCalc {
 		
@@ -48,5 +47,15 @@ public static class RequestCalc {
 			request.getParameter("password")
 			);
 			}
+		
+		}
+public void registration(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	try {
+		SQLAdder.addUser(login, password, "1");
+	} catch (Exception e) {
+		// TODO Auto-generated catch block
+		request.setAttribute("errorText", e.getMessage());
+    	request.getRequestDispatcher("/Error.jsp").forward(request, response);
+	}
 }
 }

@@ -5,7 +5,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="Main.css">
+	<link rel="stylesheet" href="css/Main.css">
 	<title>Вход</title>
 </head>
 <body>
@@ -21,12 +21,16 @@
 
 				<div class="error">
 					<p class="err-msg">
-						${error-msg}
+						${errorMsg}
 					</p>
 				</div>
 				
 				<div class="log-btn">
 					<input class="btn" type="submit" name="sign" value="Войти">
+				</div>
+				
+				<div class="reg">
+					<a href="Registration.jsp" class="regist">Еще не зарегистрированы?</a>
 				</div>
 					
 			</form>

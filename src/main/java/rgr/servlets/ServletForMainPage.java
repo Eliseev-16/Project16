@@ -30,11 +30,11 @@ public class ServletForMainPage extends HttpServlet{
 		RequestCalc Calc = RequestCalc.fromRequestParameters(request);
 		try {
 			Calc.setAsRequestAttributesAndCalculate(request);
+			request.getRequestDispatcher("/Calculation.jsp").forward(request, response);
 		} catch (Exception e) {
-			 System.out.println("Ошибка");
+			request.setAttribute("errorText", "Ошибка введенных данных");
+	    	request.getRequestDispatcher("Error.jsp").forward(request, response);
 		}
-		 
-		request.getRequestDispatcher("/Calculation.jsp").forward(request, response);
 		
 	}
 	

@@ -2,11 +2,24 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
   <display-name>SalaryCalculator</display-name>
   <welcome-file-list>
-    <welcome-file>default.html</welcome-file>
-    <welcome-file>default.jsp</welcome-file>
-    <welcome-file>default.htm</welcome-file>
-    <welcome-file>Login.html</welcome-file>
     <welcome-file>Login.jsp</welcome-file>
+    <welcome-file>Login.html</welcome-file>
     <welcome-file>Login.htm</welcome-file>
   </welcome-file-list>
+  <servlet>
+    <servlet-name>ServletForAuthorization</servlet-name>
+    <servlet-class>rgr.servlets.ServletForAuthorization</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletForAuthorization</servlet-name>
+    <url-pattern>/AuthorizationServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>ServletForMainPage</servlet-name>
+    <servlet-class>rgr.servlets.ServletForMainPage</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletForMainPage</servlet-name>
+    <url-pattern>/MainServlet</url-pattern>
+  </servlet-mapping>
 </web-app>
