@@ -36,7 +36,7 @@ public class ServletForMainPage extends HttpServlet{
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			request.setAttribute("errorText", e.getMessage() );
-	    	request.getRequestDispatcher("Error.jsp").forward(request, response);
+	    	request.getRequestDispatcher("/Error.jsp").forward(request, response);
 		}
 		
 	}

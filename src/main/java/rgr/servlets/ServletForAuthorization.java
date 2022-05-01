@@ -21,8 +21,8 @@ public class ServletForAuthorization extends HttpServlet{
 			checkLogin(request, response);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			request.setAttribute("errorText", e.getMessage() );
-	    	request.getRequestDispatcher("Error.jsp").forward(request, response);
+			request.setAttribute("errorMsg", e.getMessage() );
+			request.getRequestDispatcher("/Login.jsp").forward(request, response);
 		}
 	}
 
