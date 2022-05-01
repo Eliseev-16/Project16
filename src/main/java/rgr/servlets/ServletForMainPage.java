@@ -19,7 +19,6 @@ import rgr.pdf.CreateDocument;
  */
 @WebServlet(name="ServletForMainPage", urlPatterns="/MainServlet") 
 public class ServletForMainPage extends HttpServlet{
-	
 	/**
 	 * Do post.
 	 *
@@ -132,6 +131,7 @@ public class ServletForMainPage extends HttpServlet{
 			callSetValue();
 			try {
 			ControlClass controlClass = new ControlClass(this);
+			ServletForDocument document = new ServletForDocument(this);
 			request.setAttribute("salary", new DecimalFormat(del).format(controlClass.getSalary()));
 			request.setAttribute("incomeTax", new DecimalFormat(del).format(controlClass.getIncomeTax()));
 			request.setAttribute("pensionTax", new DecimalFormat(del).format(controlClass.getPensionTax()));
@@ -145,7 +145,6 @@ public class ServletForMainPage extends HttpServlet{
 			request.setAttribute("isResident", isResidentString);
 			request.setAttribute("tariffRate", tariffRate);
 			request.setAttribute("workTime", workTime);
-			//CreateDocument createDocument = new CreateDocument(this);
 		}
 			catch(Exception e) {
 				throw new Exception("В расчётах не так");
