@@ -79,9 +79,9 @@ public class ServletForMainPage extends HttpServlet{
 		 */
 		private RequestCalc (String surname, String name, String patronumic, String tariffRate,
 				String workTime, String isResident, String isDay) throws Exception {
-			this.surname = surname;
-			this.name = name;
-			this.patronumic = patronumic;
+			this.surname = new String (surname.getBytes("ISO-8859-1"), "utf-8");
+			this.name = new String (name.getBytes("ISO-8859-1"), "utf-8");
+			this.patronumic = new String (patronumic.getBytes("ISO-8859-1"), "utf-8");
 			this.tariffRate = Double.parseDouble(tariffRate);
 			this.workTime = Double.parseDouble(workTime);
 			 if (isResident.equals("Резидент")) {
