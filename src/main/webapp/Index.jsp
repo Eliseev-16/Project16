@@ -34,8 +34,8 @@
 				<!--<input class="input" type="text" name="period" id="period" value="${period}">-->
 				<select name="period" size="1" required>
 					<option selected value="">Выберите период
-					<option  value="${isDay}">Подневная
-					<option value="${isDay}">Почасовая
+					<option>Подневная
+					<option>Почасовая
 				</select>
 
 
@@ -49,8 +49,8 @@
 				<!--<input class="input" type="text" name="resident" id="resident" value="${resident}" required>-->
 				<select name="resident" size="1" required>
 					<option selected value="">Выберите принадлежность
-					<option  value="${isResident}">Резидент
-					<option value="${isResident}">Не резидент
+					<option>Резидент
+					<option>Не резидент
 				</select>
 				
 				<div class="error">
