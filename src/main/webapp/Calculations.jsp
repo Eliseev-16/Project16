@@ -39,22 +39,22 @@
 				
 				<div class="out">
 					<label class="results">Тип периода оплаты:</label>
-					<input class="output" type="text" name="period" id="period" value="${isDay}" >
+					<input class="output" type="text" name="isDay" id="isDay" value="${isDay}" >
 				</div>
 
 				<div class="out">
 					<label class="results">Тарифная ставка (руб): </label>
-					<input class="output" type="text" name="tariff-rate" id="tariff-rate" value="${tariff_rate}">
+					<input class="output" type="text" name="tariffRate" id="tariffRate" value="${tariffRate}">
 				</div>
 				
 				<div class="out">
 					<label class="results">Количество отработанного времени: </label>
-					<input class="output" type="text" name="work-time" id="work-time" value="${work_time}">
+					<input class="output" type="text" name="workTime" id="workTime" value="${workTime}">
 				</div>
 				
 				<div class="out">
 					<label class="results">Принадлежность к государству:</label>
-					<input class="output" type="text" name="resident" id="resident" value="${isResident}">
+					<input class="output" type="text" name="isResident" id="isResident" value="${isResident}">
 				</div>
 				
 

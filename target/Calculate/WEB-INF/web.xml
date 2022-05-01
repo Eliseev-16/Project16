@@ -22,4 +22,20 @@
     <servlet-name>ServletForMainPage</servlet-name>
     <url-pattern>/MainServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>ServletForCoefficients</servlet-name>
+    <servlet-class>rgr.servlets.ServletForCoefficients</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletForCoefficients</servlet-name>
+    <url-pattern>/CoefficientsServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+     <servlet-name>ServletForRegistration</servlet-name>
+    <servlet-class>rgr.servlets.ServletForRegistration</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletForRegistration</servlet-name>
+    <url-pattern>/Registration</url-pattern>
+    </servlet-mapping>
 </web-app>

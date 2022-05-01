@@ -20,7 +20,7 @@
 	<section>
 		<div class="container wrapper">
 			<h1 class="h1">Панель администратора</h1>
-			<form class="calc" action="${pageContext.request.contextPath}/" method="post">
+			<form class="calc" action="${pageContext.request.contextPath}/CoefficientsServlet" method="post">
 				<label for="pensionTax">Пенсионное страхование (%)</label>
 				<input class="input" type="text" name="pensionTax" id="pensionTax" value="${pensionTax}" required>
 
@@ -33,8 +33,8 @@
 				<label for="incomeTax">НДФЛ для резидента РФ (%)</label>
 				<input class="input" type="text" name="incomeTax" id="incomeTax" value="${incomeTax}" required>
 
-				<label for="incomeTax">НДФЛ для нерезидента РФ (%)</label>
-				<input class="input" type="text" name="incomeTax" id="incomeTax" value="${incomeTax}" required>
+				<label for="incomeTaxNonResident">НДФЛ для нерезидента РФ (%)</label>
+				<input class="input" type="text" name="incomeTaxNonResident" id="incomeTax" value="${incomeTaxNonResident}" required>
 
 
 				<label for="injuryTax">Травматизм (%)</label>
@@ -42,7 +42,7 @@
 				
 				<div class="error">
 					<p class="err-msg">
-						${error_msg}
+						${errorMsg}
 					</p>
 				</div>
 

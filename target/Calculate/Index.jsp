@@ -34,27 +34,27 @@
 				<!--<input class="input" type="text" name="period" id="period" value="${period}">-->
 				<select name="period" size="1" required>
 					<option selected value="">Выберите период
-					<option  value="${isDay}">Подневная
-					<option value="${isDay}">Почасовая
+					<option>Подневная
+					<option>Почасовая
 				</select>
 
 
 				<label for="tariff-rate">Тарифная ставка (руб)</label>
-				<input class="input" type="text" name="tariff-rate" id="tariff-rate" value="${tariff_rate}" required>
+				<input class="input" type="text" name="tariffRate" id="tariffRate" value="${tariffRate}" required>
 
 				<label for="work-time">Количество отработанного времени</label>
-				<input class="input" type="text" name="work-time" id="work-time" value="${work_time}" required>
+				<input class="input" type="text" name="workTime" id="workTime" value="${workTime}" required>
 
 				<label for="resident">Принадлежность к государству</label>
 				<!--<input class="input" type="text" name="resident" id="resident" value="${resident}" required>-->
 				<select name="resident" size="1" required>
 					<option selected value="">Выберите принадлежность
-					<option  value="${isResident}">Резидент
-					<option value="${isResident}">Не резидент
+					<option>Резидент
+					<option>Не резидент
 				</select>
 				
 				<div class="error">
-					<p class="err-msg">
+					<p class="errMsg">
 						${error_msg}
 					</p>
 				</div>

@@ -1,6 +1,7 @@
 package rgr.servlets;
 
 import java.io.IOException;
+import java.text.DecimalFormat;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -32,10 +33,10 @@ public class ServletForMainPage extends HttpServlet{
 		try {
 			Calc = RequestCalc.fromRequestParameters(request);
 			Calc.setAsRequestAttributesAndCalculate(request);
-			request.getRequestDispatcher("/Calculation.jsp").forward(request, response);
-		} catch (Exception e1) {
+			request.getRequestDispatcher("/Calculations.jsp").forward(request, response);
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			request.setAttribute("errorText", e1.getMessage() );
+			request.setAttribute("errorText", e.getMessage() );
 	    	request.getRequestDispatcher("Error.jsp").forward(request, response);
 		}
 		
@@ -64,24 +65,8 @@ public class ServletForMainPage extends HttpServlet{
 		/** The is resident. */
 		private static boolean isResident, isDay;
 		
-		/** The salary. */
-		private  double salary;
+		private static String isResidentString, isDayString;
 		
-		/** The income tax. */
-		private double incomeTax;
-		
-		/** The pension tax. */
-		private double pensionTax;
-		
-		/** The medical tax. */
-		private double medicalTax;
-		
-		/** The social tax. */
-		private double socialTax;
-		
-		/** The injury tax. */
-		private double injuryTax;
-						
 		/**
 		 * Instantiates a new request calc.
 		 *
@@ -102,14 +87,18 @@ public class ServletForMainPage extends HttpServlet{
 			this.workTime = Double.parseDouble(workTime);
 			 if (isResident.equals("Резидент")) {
 		            this.isResident=true;
+		            isResidentString = "Резидент";
 		        } else {
 		            this.isResident=false;
+		            isResidentString = "Нерезидент";
 		        }
 			 
 			 if (isDay.equals("Подневная")) {
 		            this.isDay=true;
+		            isDayString = "Подневная";
 		        } else {
 		            this.isDay=false;
+		            isDayString = "Почасовая";
 		        }
 			 checkExeption();
 			}
@@ -126,11 +115,11 @@ public class ServletForMainPage extends HttpServlet{
 			request.getParameter("surname"),
 			request.getParameter("name"), 
 			request.getParameter("patronumic"), 
-			request.getParameter("tariff-rate"),
-			request.getParameter("work-time"),
-			request.getParameter("isResident"),
-			request.getParameter("isDay"));
-			}
+			request.getParameter("tariffRate"),
+			request.getParameter("workTime"),
+			request.getParameter("resident"),
+			request.getParameter("period"));
+		}
 				
 		/**
 		 * Sets the as request attributes and calculate.
@@ -139,15 +128,28 @@ public class ServletForMainPage extends HttpServlet{
 		 * @throws Exception the exception
 		 */
 		public void setAsRequestAttributesAndCalculate(HttpServletRequest request) throws Exception {
+			String del = "#0.00";
 			callSetValue();
+			try {
 			ControlClass controlClass = new ControlClass(this);
-			request.setAttribute("salary", String.format(".2f", controlClass.getSalary()));
-			request.setAttribute("incomeTax", String.format(".2f", controlClass.getIncomeTax()));
-			request.setAttribute("pensionTax", String.format(".2f", controlClass.getPensionTax()));
-			request.setAttribute("medicalTax", String.format(".2f", controlClass.getMedicalTax()));
-			request.setAttribute("socialTax", String.format(".2f", controlClass.getSocialTax()));
-			request.setAttribute("injuryTax", String.format(".2f", controlClass.getInsurance()));
-			CreateDocument createDocument = new CreateDocument(this);
+			request.setAttribute("salary", new DecimalFormat(del).format(controlClass.getSalary()));
+			request.setAttribute("incomeTax", new DecimalFormat(del).format(controlClass.getIncomeTax()));
+			request.setAttribute("pensionTax", new DecimalFormat(del).format(controlClass.getPensionTax()));
+			request.setAttribute("medicalTax", new DecimalFormat(del).format(controlClass.getMedicalTax()));
+			request.setAttribute("socialTax", new DecimalFormat(del).format(controlClass.getSocialTax()));
+			request.setAttribute("injuryTax", new DecimalFormat(del).format(controlClass.getInsurance()));
+			request.setAttribute("surname", surname);
+			request.setAttribute("name", name);
+			request.setAttribute("patronumic", patronumic);
+			request.setAttribute("isDay", isDayString);
+			request.setAttribute("isResident", isResidentString);
+			request.setAttribute("tariffRate", tariffRate);
+			request.setAttribute("workTime", workTime);
+			//CreateDocument createDocument = new CreateDocument(this);
+		}
+			catch(Exception e) {
+				throw new Exception("В расчётах не так");
+			}
 		}
 		
 		@Override
