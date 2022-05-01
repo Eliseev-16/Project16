@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import rgr.DataSource;
 import rgr.calculations.ControlClass;
+import rgr.pdf.CreateDocument;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -141,6 +142,7 @@ public class ServletForMainPage extends HttpServlet{
 			request.setAttribute("medicalTax", String.format(".2f", controlClass.getMedicalTax()));
 			request.setAttribute("socialTax", String.format(".2f", controlClass.getSocialTax()));
 			request.setAttribute("injuryTax", String.format(".2f", controlClass.getInsurance()));
+			CreateDocument createDocument = new CreateDocument(this);
 		}
 		
 		@Override
