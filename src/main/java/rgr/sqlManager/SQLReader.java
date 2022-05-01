@@ -15,9 +15,10 @@ public class SQLReader {
             if (res.getString("Password").equals(password)) {
                 access = res.getInt("Access");
                 conn.closeConnection(res);
-            } else throw new SQLException("Неверно введен пароль");
-        } catch (SQLException e){
-            throw new Exception("Login or password entered incorrectly");
+            } else access = 0;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
         } catch (Exception e) {
             throw new Exception(e.getMessage());
         }
