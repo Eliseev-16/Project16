@@ -28,12 +28,14 @@ public class ServletForMainPage extends HttpServlet{
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestCalc Calc = RequestCalc.fromRequestParameters(request);
+		RequestCalc Calc;
 		try {
+			Calc = RequestCalc.fromRequestParameters(request);
 			Calc.setAsRequestAttributesAndCalculate(request);
 			request.getRequestDispatcher("/Calculation.jsp").forward(request, response);
-		} catch (Exception e) {
-			request.setAttribute("errorText", "Ошибка введенных данных");
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			request.setAttribute("errorText", e1.getMessage() );
 	    	request.getRequestDispatcher("Error.jsp").forward(request, response);
 		}
 		
@@ -89,9 +91,10 @@ public class ServletForMainPage extends HttpServlet{
 		 * @param tariffRate the tariff rate
 		 * @param workTime the work time
 		 * @param isResident the is resident
+		 * @throws Exception 
 		 */
 		private RequestCalc (String surname, String name, String patronumic, String tariffRate,
-				String workTime, String isResident, String isDay) {
+				String workTime, String isResident, String isDay) throws Exception {
 			this.surname = surname;
 			this.name = name;
 			this.patronumic = patronumic;
@@ -108,6 +111,7 @@ public class ServletForMainPage extends HttpServlet{
 		        } else {
 		            this.isDay=false;
 		        }
+			 checkExeption();
 			}
 		
 		/**
@@ -115,8 +119,9 @@ public class ServletForMainPage extends HttpServlet{
 		 *
 		 * @param request the request
 		 * @return the request calc
+		 * @throws Exception 
 		 */
-		public static RequestCalc fromRequestParameters(HttpServletRequest request) {
+		public static RequestCalc fromRequestParameters(HttpServletRequest request) throws Exception {
 			return new RequestCalc(
 			request.getParameter("surname"),
 			request.getParameter("name"), 

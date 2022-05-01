@@ -22,7 +22,7 @@ public class ServletForCoefficients extends HttpServlet{
 				Calc.getPensionTax(), Calc.getMedicalTax(), Calc.getSocialTax(), Calc.getInjuryTax());
 		}
 		catch(Exception e) {
-			request.setAttribute("errorMsg", "Введены некорректные коэффициенты");
+			request.setAttribute("errorMsg", e.getMessage());
 	    	request.getRequestDispatcher("/Admin.jsp").forward(request, response);
 		}
 	}

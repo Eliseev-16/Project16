@@ -1,6 +1,7 @@
 package rgr.servlets;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -20,7 +21,8 @@ public class ServletForAuthorization extends HttpServlet{
 			checkLogin(request, response);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			request.setAttribute("errorText", e.getMessage() );
+	    	request.getRequestDispatcher("Error.jsp").forward(request, response);
 		}
 	}
 
@@ -52,7 +54,7 @@ public class ServletForAuthorization extends HttpServlet{
 		}
 		}
 	
-	public void checkLogin(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public void checkLogin(HttpServletRequest request, HttpServletResponse response) throws Exception  {
 		RequestCalc Calc = RequestCalc.fromRequestParameters(request, response);
 		login = Calc.getLogin();
 		password = Calc.getPassword();
@@ -67,10 +69,6 @@ public class ServletForAuthorization extends HttpServlet{
 		else if (SQLReader.readUser(login, password) == 2) {
 			request.getRequestDispatcher("/Admin.jsp").forward(request, response);
 		}
-	     
-	    else {
-	    	request.setAttribute("errorMsg", "Ошибка логина или пароля");
-	    	request.getRequestDispatcher("/Login.jsp").forward(request, response);
-	    }
-	}
+		else throw new Exception("Неверно введены логин или пароль");
+		}
 }
