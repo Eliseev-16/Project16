@@ -17,7 +17,7 @@ import rgr.servlets.ServletForMainPage.RequestCalc;
 /**
  * The Class CreateDocument.
  */
-public final class CreateDocument {
+public  class CreateDocument {
 
 	/**
 	 * Instantiates a new creates the document.
@@ -98,7 +98,7 @@ public final class CreateDocument {
 		pdf.addRowsInTable(pdf.getTable(), NameCell);
 	pdf.addTable(document,pdf.getTable());
 	pdf.getClose();
-		JOptionPane.showMessageDialog(null, "Файл " + Namefile + " создан","Create PDF", JOptionPane.PLAIN_MESSAGE);
+		//JOptionPane.showMessageDialog(null, "Файл " + Namefile + " создан","Create PDF", JOptionPane.PLAIN_MESSAGE);
 }
 
 }
