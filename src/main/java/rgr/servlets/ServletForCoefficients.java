@@ -20,6 +20,8 @@ public class ServletForCoefficients extends HttpServlet{
 		RequestCalc Calc = RequestCalc.fromRequestParameters(request, response);
 		SQLAdder.addCoefficients(Calc.getIncomeTax(), Calc.getIncomeTaxNonResident(),
 				Calc.getPensionTax(), Calc.getMedicalTax(), Calc.getSocialTax(), Calc.getInjuryTax());
+		request.setAttribute("errorMsg", "Коэффициенты добавлены в базу");
+    	request.getRequestDispatcher("/Admin.jsp").forward(request, response);
 		}
 		catch(Exception e) {
 			request.setAttribute("errorMsg", e.getMessage());
