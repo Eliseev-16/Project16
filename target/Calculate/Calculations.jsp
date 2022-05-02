@@ -20,7 +20,7 @@
 	<section>
 		<div class="container wrapper results">
 			<h1 class="h1">Результаты вычисления</h1>
-			<form class="calc" action="${pageContext.request.contextPath}/MainServlet" method="post">
+			<form class="calc" action="${pageContext.request.contextPath}/Document" method="post">
 				<h2>Исходные данные:</h2>
 				<div class="out">
 					<label class="results">Фамилия:</label>

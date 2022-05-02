@@ -55,7 +55,7 @@ public void registration(HttpServletRequest request, HttpServletResponse respons
 	} catch (Exception e) {
 		// TODO Auto-generated catch block
 		request.setAttribute("errorText", e.getMessage());
-    	request.getRequestDispatcher("/Error.jsp").forward(request, response);
+    	request.getRequestDispatcher("/Login.jsp").forward(request, response);
 	}
 }
 }
