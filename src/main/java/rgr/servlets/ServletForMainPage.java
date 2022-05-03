@@ -131,7 +131,8 @@ public class ServletForMainPage extends HttpServlet{
 			callSetValue();
 			try {
 			ControlClass controlClass = new ControlClass(this);
-			ServletForDocument document = new ServletForDocument(this);
+			ServletForDocument document = new ServletForDocument();
+			document.setValue(this);
 			request.setAttribute("salary", new DecimalFormat(del).format(controlClass.getSalary()));
 			request.setAttribute("incomeTax", new DecimalFormat(del).format(controlClass.getIncomeTax()));
 			request.setAttribute("pensionTax", new DecimalFormat(del).format(controlClass.getPensionTax()));
