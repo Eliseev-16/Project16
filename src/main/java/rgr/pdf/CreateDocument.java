@@ -20,37 +20,40 @@ public  class CreateDocument {
 	private CreatePDF pdf;
 
 
-	public CreateDocument(ControlClass controlClass) {
-		createDocument(controlClass);
+	public CreateDocument(ControlClass controlClass, String surname, String name, 
+			String patronumic, double tariffRate, double workTime) {
+		createDocument(controlClass, surname, name, 
+			 patronumic, tariffRate, workTime);
 	}
 
 
-	public void createDocument(ControlClass controlClass) {
+	public void createDocument(ControlClass controlClass, String surname, String name, 
+			String patronumic, double tariffRate, double workTime) {
 		String[][] NameCell = new String[8][7];
 		NameCell[0][0] = "Начислено";
-		NameCell[0][1] = Double.toString(controlClass.getNumberOf());
-		NameCell[0][2] = Double.toString(controlClass.getNumberOf());
+		NameCell[0][1] = Double.toString(workTime);
+		NameCell[0][2] = Double.toString(workTime);
 		NameCell[0][3] = Double.toString(ControlClass.getFullSalary());
 		NameCell[0][4] = "Удержано";
-		NameCell[0][5] = Double.toString(controlClass.getNumberOf());
+		NameCell[0][5] = Double.toString(workTime);
 		NameCell[0][6] = Double.toString(ControlClass.getAmountOfTaxes());
 		NameCell[1][4] = "НДФЛ";
-		NameCell[1][5] = Double.toString(controlClass.getNumberOf());
+		NameCell[1][5] = Double.toString(workTime);
 		NameCell[1][6] = Double.toString(controlClass.getIncomeTax());
 		NameCell[2][4] = "Отчисления в пенсионный фонд";
-		NameCell[2][5] = Double.toString(controlClass.getNumberOf());
+		NameCell[2][5] = Double.toString(workTime);
 		NameCell[2][6] = Double.toString(controlClass.getPensionTax());
 		NameCell[3][4] = "Отчисления в медицинский фонд";
-		NameCell[3][5] = Double.toString(controlClass.getNumberOf());
+		NameCell[3][5] = Double.toString(workTime);
 		NameCell[3][6] = Double.toString(controlClass.getMedicalTax());
 		NameCell[4][4] = "Отчисления в социальный фонд";
-		NameCell[4][5] = Double.toString(controlClass.getNumberOf());
+		NameCell[4][5] = Double.toString(workTime);
 		NameCell[4][6] = Double.toString(controlClass.getSocialTax());
 		NameCell[5][4] = "Отчисления в страховой фонд";
-		NameCell[5][5] = Double.toString(controlClass.getNumberOf());
+		NameCell[5][5] = Double.toString(workTime);
     	NameCell[5][6] = Double.toString(controlClass.getInsurance());
 		NameCell[6][4] = "Выплачено";
-		NameCell[6][5] = Double.toString(controlClass.getNumberOf());
+		NameCell[6][5] = Double.toString(workTime);
 		NameCell[6][6] = Double.toString(controlClass.getSalary());
 
 
@@ -66,12 +69,12 @@ public  class CreateDocument {
 		String Texthat = "                                    Расчётный лист";
 		String TextPerson;
 		
-			TextPerson = controlClass.getSurname() + " " + controlClass.getName()
-			+ " " + controlClass.getPatronumic();
+			TextPerson = surname + " " + name
+			+ " " + patronumic;
 		
 		String Textgeneral = "К выплате:     " + Double.toString(controlClass.getSalary());
-		String TextNext = "Тарифная ставка:     " + controlClass.getTariffRate();
-		String Namefile = "Тест лист.pdf";
+		String TextNext = "Тарифная ставка:     " + tariffRate;
+		String Namefile = "Расчётный лист.pdf";
 		BaseFont times = null;
 		try {
 			times = BaseFont.createFont("/fonts/times.ttf", "cp1251", BaseFont.EMBEDDED);

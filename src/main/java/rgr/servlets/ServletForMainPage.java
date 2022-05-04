@@ -132,6 +132,7 @@ public class ServletForMainPage extends HttpServlet{
 			callSetValue();
 			try {
 			controlClass = new ControlClass(this);
+			CreateDocument createDocument = new CreateDocument(controlClass, surname, name, patronumic, tariffRate, workTime);
 			request.setAttribute("salary", new DecimalFormat(del).format(controlClass.getSalary()));
 			request.setAttribute("incomeTax", new DecimalFormat(del).format(controlClass.getIncomeTax()));
 			request.setAttribute("pensionTax", new DecimalFormat(del).format(controlClass.getPensionTax()));
