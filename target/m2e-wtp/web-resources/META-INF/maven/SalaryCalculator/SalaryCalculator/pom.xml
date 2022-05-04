@@ -17,14 +17,6 @@
     	<scope>test</scope>
 	</dependency>
 
-	<dependency>
-    	<groupId>CreatePDF</groupId>
-    	<artifactId>PDFv.2.0</artifactId>
-    	<version>2.0</version>
-        <scope>system</scope>
-        <systemPath>${project.basedir}/src/main/resources/CreatePDF.jar</systemPath>
-	</dependency>
-
       <dependency>
           <groupId>javax.servlet</groupId>
           <artifactId>javax.servlet-api</artifactId>
@@ -48,6 +40,12 @@
 		<version>3.36.0.3</version>
 	</dependency>
 
+	<dependency>
+		<groupId>com.itextpdf</groupId>
+		<artifactId>itextpdf</artifactId>
+		<version>5.5.13</version>
+	</dependency>
+
 
 </dependencies>
   
@@ -59,7 +57,7 @@
 </properties>
 
 <build>
-  <finalName>Calculate</finalName>
+  <finalName>SalaryCalculator(project16)</finalName>
 	<defaultGoal>package</defaultGoal>
     <plugins>
       <plugin>

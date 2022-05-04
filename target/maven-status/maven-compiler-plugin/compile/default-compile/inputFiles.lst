@@ -10,7 +10,7 @@
 /home/erik/git/Project16/src/main/java/rgr/DataSource.java
 /home/erik/git/Project16/src/main/java/rgr/calculations/CalculationSalary.java
 /home/erik/git/Project16/src/main/java/rgr/calculations/CalculationTaxes.java
-/home/erik/git/Project16/src/main/java/rgr/servlets/ServletForDocument.java
 /home/erik/git/Project16/src/main/java/rgr/servlets/ServletForMainPage.java
 /home/erik/git/Project16/src/main/java/rgr/servlets/ServletForAuthorization.java
 /home/erik/git/Project16/src/main/java/rgr/fortest/ClassForTest.java
+/home/erik/git/Project16/src/main/java/rgr/pdf/CreatePDF.java
