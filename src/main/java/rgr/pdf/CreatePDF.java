@@ -44,7 +44,7 @@ public class CreatePDF {
 
         URL basePathS = this.getClass ().getResource("");
         String basePath = basePathS.getPath();
-        if (basePath.toLowerCase().contains("classes")) basePath = basePath.substring(0,basePath.indexOf("classes") + 7) + "/";
+        if (basePath.toLowerCase().contains("web-inf")) basePath = basePath.substring(0,basePath.indexOf("WEB-INF"));
 
         filepath=basePath+namefile;
 
