@@ -11,9 +11,6 @@
 <body>
 	<header class="header">
 		<div class="container">
-				<ul class="menu">
-					<li><a href="Login.jsp" class="menu-href">Назад</a></li>
-				</ul>
 		</div>
 	</header>
 	<section id="info" class="info">
@@ -31,6 +28,9 @@
 			<div class="about-err">
 				<img src="pictures/error.jpg" alt="Error" class="error-img">
 			</div>
+			<div class="log-btn">
+					<input class="btn" type="submit" name="sign" value="Назад" onclick="javascript:history.go(-1)">
+				</div>
 				
 		</div>	
 
