@@ -10,7 +10,7 @@ import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.pdf.BaseFont;
 
 import rgr.calculations.ControlClass;
-import rgr.servlets.ServletForMainPage.RequestCalc;
+//import rgr.servlets.ServletForMainPage.controlClass;
 
 /**
  * The Class CreateDocument.
@@ -20,38 +20,38 @@ public  class CreateDocument {
 	private CreatePDF pdf;
 
 
-	public CreateDocument(RequestCalc requestCalc) {
-		createDocument(requestCalc);
+	public CreateDocument(ControlClass controlClass) {
+		createDocument(controlClass);
 	}
 
 
-	public void createDocument(RequestCalc requestCalc) {
+	public void createDocument(ControlClass controlClass) {
 		String[][] NameCell = new String[8][7];
 		NameCell[0][0] = "Начислено";
-		NameCell[0][1] = Double.toString(requestCalc.getNumberOf());
-		NameCell[0][2] = Double.toString(requestCalc.getNumberOf());
+		NameCell[0][1] = Double.toString(controlClass.getNumberOf());
+		NameCell[0][2] = Double.toString(controlClass.getNumberOf());
 		NameCell[0][3] = Double.toString(ControlClass.getFullSalary());
 		NameCell[0][4] = "Удержано";
-		NameCell[0][5] = Double.toString(requestCalc.getNumberOf());
+		NameCell[0][5] = Double.toString(controlClass.getNumberOf());
 		NameCell[0][6] = Double.toString(ControlClass.getAmountOfTaxes());
 		NameCell[1][4] = "НДФЛ";
-		NameCell[1][5] = Double.toString(requestCalc.getNumberOf());
-		NameCell[1][6] = Double.toString(requestCalc.getIncomeTax());
+		NameCell[1][5] = Double.toString(controlClass.getNumberOf());
+		NameCell[1][6] = Double.toString(controlClass.getIncomeTax());
 		NameCell[2][4] = "Отчисления в пенсионный фонд";
-		NameCell[2][5] = Double.toString(requestCalc.getNumberOf());
-		NameCell[2][6] = Double.toString(requestCalc.getPensionTax());
+		NameCell[2][5] = Double.toString(controlClass.getNumberOf());
+		NameCell[2][6] = Double.toString(controlClass.getPensionTax());
 		NameCell[3][4] = "Отчисления в медицинский фонд";
-		NameCell[3][5] = Double.toString(requestCalc.getNumberOf());
-		NameCell[3][6] = Double.toString(requestCalc.getMedicalTax());
+		NameCell[3][5] = Double.toString(controlClass.getNumberOf());
+		NameCell[3][6] = Double.toString(controlClass.getMedicalTax());
 		NameCell[4][4] = "Отчисления в социальный фонд";
-		NameCell[4][5] = Double.toString(requestCalc.getNumberOf());
-		NameCell[4][6] = Double.toString(requestCalc.getSocialTax());
+		NameCell[4][5] = Double.toString(controlClass.getNumberOf());
+		NameCell[4][6] = Double.toString(controlClass.getSocialTax());
 		NameCell[5][4] = "Отчисления в страховой фонд";
-		NameCell[5][5] = Double.toString(requestCalc.getNumberOf());
-    	NameCell[5][6] = Double.toString(requestCalc.getInsurance());
+		NameCell[5][5] = Double.toString(controlClass.getNumberOf());
+    	NameCell[5][6] = Double.toString(controlClass.getInsurance());
 		NameCell[6][4] = "Выплачено";
-		NameCell[6][5] = Double.toString(requestCalc.getNumberOf());
-		NameCell[6][6] = Double.toString(requestCalc.getSalary());
+		NameCell[6][5] = Double.toString(controlClass.getNumberOf());
+		NameCell[6][6] = Double.toString(controlClass.getSalary());
 
 
      	String[] Head = new String[7];
@@ -66,12 +66,12 @@ public  class CreateDocument {
 		String Texthat = "                                    Расчётный лист";
 		String TextPerson;
 		
-			TextPerson = requestCalc.getSurname() + " " + requestCalc.getName()
-			+ " " + requestCalc.getPatronumic();
+			TextPerson = controlClass.getSurname() + " " + controlClass.getName()
+			+ " " + controlClass.getPatronumic();
 		
-		String Textgeneral = "К выплате:     " + Double.toString(requestCalc.getSalary());
-		String TextNext = "Тарифная ставка:     " + requestCalc.getTariffRate();
-		String Namefile = "Расчётный лист.pdf";
+		String Textgeneral = "К выплате:     " + Double.toString(controlClass.getSalary());
+		String TextNext = "Тарифная ставка:     " + controlClass.getTariffRate();
+		String Namefile = "Тест лист.pdf";
 		BaseFont times = null;
 		try {
 			times = BaseFont.createFont("/fonts/times.ttf", "cp1251", BaseFont.EMBEDDED);

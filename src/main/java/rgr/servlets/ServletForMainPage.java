@@ -38,7 +38,6 @@ public class ServletForMainPage extends HttpServlet{
 			request.setAttribute("errorText", e.getMessage() );
 	    	request.getRequestDispatcher("/Error.jsp").forward(request, response);
 		}
-		
 	}
 	
 	/**
@@ -48,6 +47,8 @@ public class ServletForMainPage extends HttpServlet{
 		
 		/** The surname. */
 		private static String surname;
+		
+		private static ControlClass controlClass;
 		
 		/** The name. */
 		private static String name;
@@ -130,9 +131,7 @@ public class ServletForMainPage extends HttpServlet{
 			String del = "#0.00";
 			callSetValue();
 			try {
-			ControlClass controlClass = new ControlClass(this);
-			ServletForDocument document = new ServletForDocument();
-			document.setValue(this);
+			controlClass = new ControlClass(this);
 			request.setAttribute("salary", new DecimalFormat(del).format(controlClass.getSalary()));
 			request.setAttribute("incomeTax", new DecimalFormat(del).format(controlClass.getIncomeTax()));
 			request.setAttribute("pensionTax", new DecimalFormat(del).format(controlClass.getPensionTax()));
@@ -152,6 +151,9 @@ public class ServletForMainPage extends HttpServlet{
 			}
 		}
 		
+
+		
+		
 		@Override
 		public void callSetValue() {
 			 setValues(surname, name, patronumic, tariffRate, workTime, isResident, isDay );
@@ -163,6 +165,10 @@ public class ServletForMainPage extends HttpServlet{
 			if(workTime * tariffRate <= 0 || workTime <= 0 || tariffRate <= 0) {
 				throw new Exception("Ошибка в введенных данных");
 			}
+			
+		}
+		public static ControlClass getControlClass() {
+			return controlClass;
 			
 		}
 	}
