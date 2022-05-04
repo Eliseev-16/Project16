@@ -88,7 +88,7 @@ public class ServletForMainPage extends HttpServlet{
 			this.patronumic = new String (patronumic.getBytes("ISO-8859-1"), "utf-8");
 			this.tariffRate = Double.parseDouble(tariffRate);
 			this.workTime = Double.parseDouble(workTime);
-			 if (isResident.equals("Резидент")) {
+			 if (isResident.equals("Resident")) {
 		            this.isResident=true;
 		            isResidentString = "Резидент";
 		        } else {
@@ -96,7 +96,7 @@ public class ServletForMainPage extends HttpServlet{
 		            isResidentString = "Нерезидент";
 		        }
 			 
-			 if (isDay.equals("Подневная")) {
+			 if (isDay.equals("Daily")) {
 		            this.isDay=true;
 		            isDayString = "Подневная";
 		        } else {
