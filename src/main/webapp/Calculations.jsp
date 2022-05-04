@@ -77,7 +77,7 @@
 				<p class="results">Травматизм (руб): ${injuryTax}</p>
 
 				<div class="log-btn">
-					<input class="btn " type="submit" name="sign" value="Рассчетный лист">
+					<a href="/WEB-INF/classes/Расчётный лист.pdf" class="btn" download="" target="_blank">Расчётный лист</a>
 				</div>
 				
 			</form>

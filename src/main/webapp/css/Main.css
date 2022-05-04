@@ -239,3 +239,7 @@ color: #21256E;
 .regist:hover {
 border-bottom: 1px solid #21256E;;
 }
+
+.log-btn a{
+	text-decoration: none;
+}
