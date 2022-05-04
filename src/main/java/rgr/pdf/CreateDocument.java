@@ -96,7 +96,7 @@ public  class CreateDocument {
 		
 		String Textgeneral = "К выплате:     " + Double.toString(controlClass.getSalary());
 		String TextNext = "Тарифная ставка:     " + tariffRate;
-		String Namefile = "PaySheet.pdf";
+		String Namefile = "Расчетный_лист.pdf";
 		BaseFont times = null;
 		try {
 			times = BaseFont.createFont("/fonts/times.ttf", "cp1251", BaseFont.EMBEDDED);
