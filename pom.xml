@@ -57,7 +57,7 @@
 </properties>
 
 <build>
-  <finalName>Calculate</finalName>
+  <finalName>SalaryCalculator(project16)</finalName>
 	<defaultGoal>package</defaultGoal>
     <plugins>
       <plugin>
