@@ -9,8 +9,6 @@ import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.pdf.BaseFont;
 
-import create.CreatePDF;
-import rgr.calculations.CalculationTaxes;
 import rgr.calculations.ControlClass;
 import rgr.servlets.ServletForMainPage.RequestCalc;
 
@@ -19,20 +17,14 @@ import rgr.servlets.ServletForMainPage.RequestCalc;
  */
 public  class CreateDocument {
 
-	/**
-	 * Instantiates a new creates the document.
-	 *
-	 * @param frame the frame
-	 */
+	private CreatePDF pdf;
+
+
 	public CreateDocument(RequestCalc requestCalc) {
 		createDocument(requestCalc);
 	}
 
-	/**
-	 * Creates the document.
-	 *
-	 * @param frame the frame
-	 */
+
 	public void createDocument(RequestCalc requestCalc) {
 		String[][] NameCell = new String[8][7];
 		NameCell[0][0] = "Начислено";
@@ -89,7 +81,13 @@ public  class CreateDocument {
 		e2.printStackTrace();
 	}
 
-	   CreatePDF pdf = new CreatePDF(Namefile,times);	Document document = pdf.getDocument();
+		CreatePDF pdf = null;
+		try {
+			pdf = new CreatePDF(Namefile,times);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		Document document = pdf.getDocument();
 	 	pdf.addText(document, Texthat, 20,true);
 		pdf.addText(document, TextPerson, 18, true);
 		pdf.addText(document, Textgeneral, 16,true);
@@ -99,6 +97,11 @@ public  class CreateDocument {
 	pdf.addTable(document,pdf.getTable());
 	pdf.getClose();
 		//JOptionPane.showMessageDialog(null, "Файл " + Namefile + " создан","Create PDF", JOptionPane.PLAIN_MESSAGE);
+		this.pdf = pdf;
 }
+
+	public String getFilePath(){
+		return pdf.getFilePath();
+	}
 
 }
