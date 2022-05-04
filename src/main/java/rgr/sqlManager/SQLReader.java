@@ -5,7 +5,20 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class SQLReader.
+ */
 public class SQLReader {
+    
+    /**
+     * Read user.
+     *
+     * @param login the login
+     * @param password the password
+     * @return the int
+     * @throws Exception the exception
+     */
     public static int readUser(String login, String password) throws Exception {
         int access = 0;
         try {
@@ -26,6 +39,12 @@ public class SQLReader {
         return access;
     }
 
+    /**
+     * Read coefficients.
+     *
+     * @return the coefficient values
+     * @throws Exception the exception
+     */
     public static CoefficientValues readCoefficients() throws Exception {
         CoefficientValues cv = null;
         try {

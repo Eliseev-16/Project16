@@ -23,6 +23,7 @@ public final class ControlClass extends DataSource {
 	/**
 	 * Instantiates a new control class.
 	 *
+	 * @param requestCalc the request calc
 	 * @throws Exception the exception
 	 */
 	public ControlClass(RequestCalc requestCalc) throws Exception{
@@ -37,7 +38,8 @@ public final class ControlClass extends DataSource {
 	
 	/**
 	 * Calculate.
-	 * @throws Exception 
+	 *
+	 * @throws Exception the exception
 	 */
 	public void calculate() throws Exception {
 		CoefficientValues coefficients = SQLReader.readCoefficients();

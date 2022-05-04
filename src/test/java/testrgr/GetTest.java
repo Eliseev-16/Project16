@@ -6,18 +6,26 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 //
 import rgr.fortest.ClassForTest;
+// TODO: Auto-generated Javadoc
 //
 //// TODO: Auto-generated Javadoc
 ///**
 // * The Class GetTest.
+/**
+ * The Class GetTest.
+ */
 // */
 public class GetTest {
 //
+/** The test class. */
 //	/** The test class. */
 	private static ClassForTest testClass;
 //	
 //	/**
 //	 * Sets the up.
+/**
+ * Sets the up.
+ */
 //	 */
 	@BeforeClass
 	public static void setUp() {
@@ -27,6 +35,9 @@ public class GetTest {
 //	
 //	/**
 //	 * Test.
+/**
+ * Test.
+ */
 //	 */
 	@Test
 	public void test() {

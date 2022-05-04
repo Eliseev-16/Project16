@@ -2,12 +2,22 @@ package rgr.fortest;
 
 import rgr.DataSource;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ClassForTest.
+ */
 public final class ClassForTest extends DataSource {
 	
+	/**
+	 * Instantiates a new class for test.
+	 */
 	public ClassForTest(){
 		callSetValue();
 	}
 	
+	/**
+	 * Call set value.
+	 */
 	@Override
 	public void callSetValue() {
 		
@@ -15,6 +25,11 @@ public final class ClassForTest extends DataSource {
 		
 	}
 	
+	/**
+	 * Check exeption.
+	 *
+	 * @throws Exception the exception
+	 */
 	@Override
 	public void checkExeption() throws Exception {
 		

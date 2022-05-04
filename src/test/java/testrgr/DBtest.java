@@ -6,10 +6,19 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import rgr.sqlManager.SQLReader;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class DBtest.
+ */
 public class DBtest {
+	
+	/** The access. */
 	private static int access = 0;
 
 
+	/**
+	 * Sets the up.
+	 */
 	@BeforeClass
 	public static void setUp() {
 		try {

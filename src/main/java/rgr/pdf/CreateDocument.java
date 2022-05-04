@@ -10,6 +10,7 @@ import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.pdf.BaseFont;
 
 import rgr.calculations.ControlClass;
+// TODO: Auto-generated Javadoc
 //import rgr.servlets.ServletForMainPage.controlClass;
 
 /**
@@ -17,9 +18,20 @@ import rgr.calculations.ControlClass;
  */
 public  class CreateDocument {
 
+	/** The pdf. */
 	private CreatePDF pdf;
 
 
+	/**
+	 * Instantiates a new creates the document.
+	 *
+	 * @param controlClass the control class
+	 * @param surname the surname
+	 * @param name the name
+	 * @param patronumic the patronumic
+	 * @param tariffRate the tariff rate
+	 * @param workTime the work time
+	 */
 	public CreateDocument(ControlClass controlClass, String surname, String name, 
 			String patronumic, double tariffRate, double workTime) {
 		createDocument(controlClass, surname, name, 
@@ -27,6 +39,16 @@ public  class CreateDocument {
 	}
 
 
+	/**
+	 * Creates the document.
+	 *
+	 * @param controlClass the control class
+	 * @param surname the surname
+	 * @param name the name
+	 * @param patronumic the patronumic
+	 * @param tariffRate the tariff rate
+	 * @param workTime the work time
+	 */
 	public void createDocument(ControlClass controlClass, String surname, String name, 
 			String patronumic, double tariffRate, double workTime) {
 		String[][] NameCell = new String[8][7];
@@ -103,6 +125,11 @@ public  class CreateDocument {
 		this.pdf = pdf;
 }
 
+	/**
+	 * Gets the file path.
+	 *
+	 * @return the file path
+	 */
 	public String getFilePath(){
 		return pdf.getFilePath();
 	}

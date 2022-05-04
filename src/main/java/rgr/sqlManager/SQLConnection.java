@@ -6,15 +6,31 @@ import java.net.URL;
 import java.sql.*;
 import java.util.Locale;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class SQLConnection.
+ */
 public class SQLConnection {
 
     //String login = "root";
+    /** The url. */
     //String pass = "";//?useSSL=false
     public String url;
+    
+    /** The connection. */
     private Connection connection;
+    
+    /** The statement. */
     private Statement statement;
+    
+    /** The is connect. */
     private boolean isConnect = false;
 
+    /**
+     * Instantiates a new SQL connection.
+     *
+     * @throws Exception the exception
+     */
     public SQLConnection() throws Exception {
         URL basePathS = this.getClass ().getResource("");
         String basePath = basePathS.getPath();
@@ -30,6 +46,11 @@ public class SQLConnection {
         connect();
     }
 
+    /**
+     * Connect.
+     *
+     * @throws Exception the exception
+     */
     private void connect() throws Exception {
         try {
             connection = DriverManager.getConnection(url);
@@ -40,6 +61,12 @@ public class SQLConnection {
         }
     }
 
+    /**
+     * Gets the connection.
+     *
+     * @return the connection
+     * @throws Exception the exception
+     */
     public Connection getConnection() throws Exception {
         try {
             if (isConnect) return connection;
@@ -49,6 +76,12 @@ public class SQLConnection {
         return null;
     }
 
+    /**
+     * Gets the statement.
+     *
+     * @return the statement
+     * @throws Exception the exception
+     */
     public Statement getStatement() throws Exception {
         try {
             if (isConnect) return statement;
@@ -58,6 +91,11 @@ public class SQLConnection {
         return null;
     }
 
+    /**
+     * Close connection.
+     *
+     * @throws Exception the exception
+     */
     public void closeConnection() throws Exception {
         try {
             connection.close();
@@ -68,6 +106,12 @@ public class SQLConnection {
 
     }
 
+    /**
+     * Close connection.
+     *
+     * @param r the r
+     * @throws Exception the exception
+     */
     public void closeConnection(ResultSet r) throws Exception {
         try {
             connection.close();
@@ -78,6 +122,12 @@ public class SQLConnection {
         }
     }
 
+    /**
+     * The main method.
+     *
+     * @param args the arguments
+     * @throws Exception the exception
+     */
     public static void main(String[] args) throws Exception {
 //        //SQLConnection a = new SQLConnection();
 //        String basePath = new File("").getAbsolutePath();

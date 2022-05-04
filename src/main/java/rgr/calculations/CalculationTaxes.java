@@ -12,6 +12,16 @@ private static String PENSIONTAX, MEDICALTAX, SOCIALTAX, INSURANCETAX;
 /** The Constant INCOMETAXFORREZIDENT. */
 private static String INCOMETAXFORREZIDENT, INCOMETAXFORNONREZIDENT;
 
+	/**
+	 * Sets the value.
+	 *
+	 * @param PENSIONTAX the pensiontax
+	 * @param MEDICALTAX the medicaltax
+	 * @param SOCIALTAX the socialtax
+	 * @param INSURANCETAX the insurancetax
+	 * @param INCOMETAXFORREZIDENT the incometaxforrezident
+	 * @param INCOMETAXFORNONREZIDENT the incometaxfornonrezident
+	 */
 	public void setValue(String PENSIONTAX, String MEDICALTAX, String SOCIALTAX, String INSURANCETAX, 
 		String INCOMETAXFORREZIDENT, String INCOMETAXFORNONREZIDENT) {
 	this.PENSIONTAX = PENSIONTAX;

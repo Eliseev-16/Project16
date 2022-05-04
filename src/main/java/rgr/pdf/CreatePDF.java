@@ -25,18 +25,47 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class CreatePDF.
+ */
 public class CreatePDF {
+    
+    /** The times. */
     private BaseFont times = null;
+    
+    /** The namefile. */
     private String namefile;
+    
+    /** The Name cell hat. */
     private String[] NameCellHat;
+    
+    /** The array cell. */
     private String[][] arrayCell;
+    
+    /** The document. */
     private Document document;
+    
+    /** The Size. */
     private int Size;
+    
+    /** The Size cell. */
     private int SizeCell;
+    
+    /** The table. */
     private PdfPTable table;
+    
+    /** The filepath. */
     private String filepath;
 
 
+    /**
+     * Instantiates a new creates the PDF.
+     *
+     * @param namefile the namefile
+     * @param BaseFontPDF the base font PDF
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
     public CreatePDF(String namefile, BaseFont BaseFontPDF) throws IOException {
         this.namefile = namefile;
         this.times = BaseFontPDF;
@@ -58,6 +87,12 @@ public class CreatePDF {
         this.document.open();
     }
 
+    /**
+     * Adds the rows.
+     *
+     * @param table the table
+     * @param arrayCell the array cell
+     */
     private void addRows(PdfPTable table, String[][] arrayCell) {
         int SizeTwo = arrayCell.length;
         int SizeOne = arrayCell[0].length;
@@ -70,6 +105,12 @@ public class CreatePDF {
 
     }
 
+    /**
+     * Sets the header.
+     *
+     * @param table the table
+     * @param NameCellHat the name cell hat
+     */
     private void setHeader(PdfPTable table, String[] NameCellHat) {
         for(int i = 0; i < NameCellHat.length; ++i) {
             PdfPCell header = new PdfPCell();
@@ -81,18 +122,41 @@ public class CreatePDF {
 
     }
 
+    /**
+     * Gets the document.
+     *
+     * @return the document
+     */
     public Document getDocument() {
         return this.document;
     }
 
+    /**
+     * Gets the close.
+     *
+     * @return the close
+     */
     public void getClose() {
         this.document.close();
     }
 
+    /**
+     * Gets the file path.
+     *
+     * @return the file path
+     */
     public String getFilePath(){
         return filepath;
     }
 
+    /**
+     * Adds the picture.
+     *
+     * @param url the url
+     * @param document the document
+     * @param position1 the position 1
+     * @param position2 the position 2
+     */
     public void addPicture(URL url, Document document, int position1, int position2) {
         Image img = null;
 
@@ -116,6 +180,14 @@ public class CreatePDF {
 
     }
 
+    /**
+     * Adds the text.
+     *
+     * @param document the document
+     * @param Text the text
+     * @param SizeFont the size font
+     * @param Space the space
+     */
     public void addText(Document document, String Text, int SizeFont, boolean Space) {
         Paragraph paragraph = new Paragraph();
         Paragraph paragraphadd = new Paragraph(Text, new Font(this.times, (float)SizeFont));
@@ -143,19 +215,42 @@ public class CreatePDF {
         paragraph = null;
     }
 
+    /**
+     * Inits the table and add hat.
+     *
+     * @param document the document
+     * @param NameCellHat the name cell hat
+     */
     public void InitTableAndAddHat(Document document, String[] NameCellHat) {
         this.table = new PdfPTable(NameCellHat.length);
         this.setHeader(this.table, NameCellHat);
     }
 
+    /**
+     * Gets the table.
+     *
+     * @return the table
+     */
     public PdfPTable getTable() {
         return this.table;
     }
 
+    /**
+     * Adds the rows in table.
+     *
+     * @param Table the table
+     * @param arrayCell the array cell
+     */
     public void addRowsInTable(PdfPTable Table, String[][] arrayCell) {
         this.addRows(Table, arrayCell);
     }
 
+    /**
+     * Adds the table.
+     *
+     * @param document the document
+     * @param Table the table
+     */
     public void addTable(Document document, PdfPTable Table) {
         try {
             document.add(Table);

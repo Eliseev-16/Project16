@@ -35,7 +35,7 @@ public class ServletForMainPage extends HttpServlet{
 			request.getRequestDispatcher("/Calculations.jsp").forward(request, response);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			request.setAttribute("errorText", e.getMessage() );
+			request.setAttribute("errorText", "Введены некорректные данные");
 	    	request.getRequestDispatcher("/Error.jsp").forward(request, response);
 		}
 	}
@@ -48,6 +48,7 @@ public class ServletForMainPage extends HttpServlet{
 		/** The surname. */
 		private static String surname;
 		
+		/** The control class. */
 		private static ControlClass controlClass;
 		
 		/** The name. */
@@ -65,6 +66,7 @@ public class ServletForMainPage extends HttpServlet{
 		/** The is resident. */
 		private static boolean isResident, isDay;
 		
+		/** The is day string. */
 		private static String isResidentString, isDayString;
 		
 		/**
@@ -76,7 +78,8 @@ public class ServletForMainPage extends HttpServlet{
 		 * @param tariffRate the tariff rate
 		 * @param workTime the work time
 		 * @param isResident the is resident
-		 * @throws Exception 
+		 * @param isDay the is day
+		 * @throws Exception the exception
 		 */
 		private RequestCalc (String surname, String name, String patronumic, String tariffRate,
 				String workTime, String isResident, String isDay) throws Exception {
@@ -108,7 +111,7 @@ public class ServletForMainPage extends HttpServlet{
 		 *
 		 * @param request the request
 		 * @return the request calc
-		 * @throws Exception 
+		 * @throws Exception the exception
 		 */
 		public static RequestCalc fromRequestParameters(HttpServletRequest request) throws Exception {
 			return new RequestCalc(
@@ -148,19 +151,27 @@ public class ServletForMainPage extends HttpServlet{
 			request.setAttribute("workTime", workTime);
 		}
 			catch(Exception e) {
-				throw new Exception("В расчётах не так");
+				throw new Exception("Ошибка в расчетах");
 			}
 		}
 		
 
 		
 		
+		/**
+		 * Call set value.
+		 */
 		@Override
 		public void callSetValue() {
 			 setValues(surname, name, patronumic, tariffRate, workTime, isResident, isDay );
 			
 		}
 
+		/**
+		 * Check exeption.
+		 *
+		 * @throws Exception the exception
+		 */
 		@Override
 		public void checkExeption() throws Exception {
 			if(workTime * tariffRate <= 0 || workTime <= 0 || tariffRate <= 0) {
@@ -168,6 +179,12 @@ public class ServletForMainPage extends HttpServlet{
 			}
 			
 		}
+		
+		/**
+		 * Gets the control class.
+		 *
+		 * @return the control class
+		 */
 		public static ControlClass getControlClass() {
 			return controlClass;
 			

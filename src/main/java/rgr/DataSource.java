@@ -9,6 +9,7 @@ import javax.swing.JTextField;
  */
 public abstract class DataSource implements Structure {
 
+	/** The patronumic. */
 	private String surname, name, patronumic; //ФИО
 	
 	/** The salary. */
@@ -29,16 +30,13 @@ public abstract class DataSource implements Structure {
     /**
      * Sets the values.
      *
+     * @param surname the surname
+     * @param name the name
+     * @param patronumic the patronumic
      * @param tariffRate the tariff rate
      * @param numberOf the number of
-     * @param resident the resident
-     * @param typeOfPeriod the type of period
-     * @param salary the salary
-     * @param incomeTax the income tax
-     * @param pensionTax the pension tax
-     * @param medicalTax the medical tax
-     * @param socialTax the social tax
-     * @param insurance the insurance
+     * @param isResident the is resident
+     * @param isDay the is day
      */
     protected final void setValues(String surname, String name, String patronumic, double tariffRate, double numberOf, boolean isResident, boolean isDay){                 
     	this.surname=surname;
@@ -80,14 +78,29 @@ public abstract class DataSource implements Structure {
         return surname;
     }
     
+    /**
+     * Gets the name.
+     *
+     * @return the name
+     */
     public final String getName() {
         return name;
     }
     
+    /**
+     * Gets the patronumic.
+     *
+     * @return the patronumic
+     */
     public final String getPatronumic() {
         return patronumic;
     }
     
+    /**
+     * Gets the salary.
+     *
+     * @return the salary
+     */
     public final double getSalary() {
         return salary;
     }
