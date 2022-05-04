@@ -77,7 +77,7 @@
 				<p class="results">Травматизм (руб): ${injuryTax}</p>
 
 				<div class="log-btn">
-					<a href="/SalaryCalculator(project16)/Расчётный лист.pdf" class="btn" download>Расчётный лист</a>
+					<a href="./PaySheet.pdf" class="btn" download>Расчётный лист</a>
 				</div>
 				
 			</form>
