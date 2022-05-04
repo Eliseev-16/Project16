@@ -21,7 +21,7 @@
 				
 				<div class="error">
 					<p class="err-msg">
-						${error_msg}
+						${errorMsg}
 					</p>
 				</div>
 				
